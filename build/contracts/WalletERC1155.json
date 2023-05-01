@@ -1,0 +1,689 @@
+{
+  "contractName": "WalletERC1155",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/WalletERC1155.sol\":\"WalletERC1155\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/token/ERC1155/IERC1155.sol\":{\"keccak256\":\"0x6392f2cfe3a5ee802227fe7a2dfd47096d881aec89bddd214b35c5b46d3cd941\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://bd9c47a375639888e726a99da718890ba16d17d7ad9eacb0ccc892d46d1b3ee0\",\"dweb:/ipfs/Qmb41W5RUjy2sWg49A2rMnxekSeEk6SvGyJL5tyCCSr7un\"]},\"@openzeppelin/contracts/utils/introspection/IERC165.sol\":{\"keccak256\":\"0x447a5f3ddc18419d41ff92b3773fb86471b1db25773e07f877f548918a185bf1\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://be161e54f24e5c6fae81a12db1a8ae87bc5ae1b0ddc805d82a1440a68455088f\",\"dweb:/ipfs/QmP7C3CHdY9urF4dEMb9wmsp1wMxHF6nhA2yQE5SKiPAdy\"]},\"project:/contracts/WalletERC1155.sol\":{\"keccak256\":\"0x7c19663376249141484e718535875c14ba240f10e7d3b0d716c783b5a76b2508\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://95bab3a6ddfdd91a8c665c99c7c5793e86bdee78697ddb1572d62713d1838663\",\"dweb:/ipfs/QmchoerohVQXh5vpL22Q4Q8WHb7Ard56nhyvxGoHqZD1qa\"]},\"project:/contracts/WalletOwners.sol\":{\"keccak256\":\"0x79be63a59c427d4a32af54e340aff8bb5979e3d71597d6f865940cb413dd72c9\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://11e358c7c31ee4e572ef1e149104dd21f6ab4f8cd32c11f068fc86c738eaf98a\",\"dweb:/ipfs/QmTNcK3C8dRrB96anTQbSZDaUaihVmMFBh1aFb5siBemHy\"]}},\"version\":1}",
+  "bytecode": "0x60566050600b82828239805160001a6073146043577f4e487b7100000000000000000000000000000000000000000000000000000000600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea264697066735822122072b02e04dd6c62b3142bf15135d580dfa5f1c46a7edb2c251c12849b0aed1b1264736f6c63430008130033",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea264697066735822122072b02e04dd6c62b3142bf15135d580dfa5f1c46a7edb2c251c12849b0aed1b1264736f6c63430008130033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "154:408:10:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "154:408:10:-:0;;;;;;;;",
+  "source": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.0;\r\n\r\nimport \"@openzeppelin/contracts/token/ERC1155/IERC1155.sol\";\r\nimport \"./WalletOwners.sol\";\r\n\r\nlibrary WalletERC1155 {\r\n    using WalletOwners for WalletOwners.Owners;\r\n\r\n    function withdraw(WalletOwners.Owners storage owners, IERC1155 token, address to, uint256 tokenId, uint256 amount, bytes memory data, address sender) internal {\r\n        require(owners.isOwner[sender], \"WalletERC1155: caller is not an owner\");\r\n        token.safeTransferFrom(address(this), to, tokenId, amount, data);\r\n    }\r\n}\r\n",
+  "sourcePath": "C:\\Users\\cheny\\Documents\\GitHub\\MultiSigWallet\\contracts\\WalletERC1155.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/WalletERC1155.sol",
+    "exportedSymbols": {
+      "IERC1155": [
+        234
+      ],
+      "IERC165": [
+        521
+      ],
+      "WalletERC1155": [
+        778
+      ],
+      "WalletOwners": [
+        1026
+      ]
+    },
+    "id": 779,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 730,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "33:23:10"
+      },
+      {
+        "absolutePath": "@openzeppelin/contracts/token/ERC1155/IERC1155.sol",
+        "file": "@openzeppelin/contracts/token/ERC1155/IERC1155.sol",
+        "id": 731,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 779,
+        "sourceUnit": 235,
+        "src": "60:60:10",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "project:/contracts/WalletOwners.sol",
+        "file": "./WalletOwners.sol",
+        "id": 732,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 779,
+        "sourceUnit": 1027,
+        "src": "122:28:10",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "WalletERC1155",
+        "contractDependencies": [],
+        "contractKind": "library",
+        "fullyImplemented": true,
+        "id": 778,
+        "linearizedBaseContracts": [
+          778
+        ],
+        "name": "WalletERC1155",
+        "nameLocation": "162:13:10",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "global": false,
+            "id": 736,
+            "libraryName": {
+              "id": 733,
+              "name": "WalletOwners",
+              "nameLocations": [
+                "189:12:10"
+              ],
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 1026,
+              "src": "189:12:10"
+            },
+            "nodeType": "UsingForDirective",
+            "src": "183:43:10",
+            "typeName": {
+              "id": 735,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 734,
+                "name": "WalletOwners.Owners",
+                "nameLocations": [
+                  "206:12:10",
+                  "219:6:10"
+                ],
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 978,
+                "src": "206:19:10"
+              },
+              "referencedDeclaration": 978,
+              "src": "206:19:10",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_Owners_$978_storage_ptr",
+                "typeString": "struct WalletOwners.Owners"
+              }
+            }
+          },
+          {
+            "body": {
+              "id": 776,
+              "nodeType": "Block",
+              "src": "393:166:10",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "baseExpression": {
+                          "expression": {
+                            "id": 756,
+                            "name": "owners",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 739,
+                            "src": "412:6:10",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_Owners_$978_storage_ptr",
+                              "typeString": "struct WalletOwners.Owners storage pointer"
+                            }
+                          },
+                          "id": 757,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberLocation": "419:7:10",
+                          "memberName": "isOwner",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 977,
+                          "src": "412:14:10",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                            "typeString": "mapping(address => bool)"
+                          }
+                        },
+                        "id": 759,
+                        "indexExpression": {
+                          "id": 758,
+                          "name": "sender",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 752,
+                          "src": "427:6:10",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "412:22:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "hexValue": "57616c6c6574455243313135353a2063616c6c6572206973206e6f7420616e206f776e6572",
+                        "id": 760,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "436:39:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_8c2e4cfbcc936b9dd51e4aa85c09a4f4027e5be0fbf75323f411cc410a8e947c",
+                          "typeString": "literal_string \"WalletERC1155: caller is not an owner\""
+                        },
+                        "value": "WalletERC1155: caller is not an owner"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_8c2e4cfbcc936b9dd51e4aa85c09a4f4027e5be0fbf75323f411cc410a8e947c",
+                          "typeString": "literal_string \"WalletERC1155: caller is not an owner\""
+                        }
+                      ],
+                      "id": 755,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
+                      "referencedDeclaration": 4294967278,
+                      "src": "404:7:10",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 761,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "404:72:10",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 762,
+                  "nodeType": "ExpressionStatement",
+                  "src": "404:72:10"
+                },
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "arguments": [
+                          {
+                            "id": 768,
+                            "name": "this",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 4294967268,
+                            "src": "518:4:10",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_contract$_WalletERC1155_$778",
+                              "typeString": "library WalletERC1155"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_contract$_WalletERC1155_$778",
+                              "typeString": "library WalletERC1155"
+                            }
+                          ],
+                          "id": 767,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "nodeType": "ElementaryTypeNameExpression",
+                          "src": "510:7:10",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_address_$",
+                            "typeString": "type(address)"
+                          },
+                          "typeName": {
+                            "id": 766,
+                            "name": "address",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "510:7:10",
+                            "typeDescriptions": {}
+                          }
+                        },
+                        "id": 769,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "nameLocations": [],
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "510:13:10",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "id": 770,
+                        "name": "to",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 744,
+                        "src": "525:2:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "id": 771,
+                        "name": "tokenId",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 746,
+                        "src": "529:7:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      {
+                        "id": 772,
+                        "name": "amount",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 748,
+                        "src": "538:6:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      {
+                        "id": 773,
+                        "name": "data",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 750,
+                        "src": "546:4:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes_memory_ptr",
+                          "typeString": "bytes memory"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        {
+                          "typeIdentifier": "t_bytes_memory_ptr",
+                          "typeString": "bytes memory"
+                        }
+                      ],
+                      "expression": {
+                        "id": 763,
+                        "name": "token",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 742,
+                        "src": "487:5:10",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_IERC1155_$234",
+                          "typeString": "contract IERC1155"
+                        }
+                      },
+                      "id": 765,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberLocation": "493:16:10",
+                      "memberName": "safeTransferFrom",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 217,
+                      "src": "487:22:10",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_address_$_t_uint256_$_t_uint256_$_t_bytes_memory_ptr_$returns$__$",
+                        "typeString": "function (address,address,uint256,uint256,bytes memory) external"
+                      }
+                    },
+                    "id": 774,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "487:64:10",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 775,
+                  "nodeType": "ExpressionStatement",
+                  "src": "487:64:10"
+                }
+              ]
+            },
+            "id": 777,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "withdraw",
+            "nameLocation": "243:8:10",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 753,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 739,
+                  "mutability": "mutable",
+                  "name": "owners",
+                  "nameLocation": "280:6:10",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 777,
+                  "src": "252:34:10",
+                  "stateVariable": false,
+                  "storageLocation": "storage",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Owners_$978_storage_ptr",
+                    "typeString": "struct WalletOwners.Owners"
+                  },
+                  "typeName": {
+                    "id": 738,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 737,
+                      "name": "WalletOwners.Owners",
+                      "nameLocations": [
+                        "252:12:10",
+                        "265:6:10"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 978,
+                      "src": "252:19:10"
+                    },
+                    "referencedDeclaration": 978,
+                    "src": "252:19:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Owners_$978_storage_ptr",
+                      "typeString": "struct WalletOwners.Owners"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 742,
+                  "mutability": "mutable",
+                  "name": "token",
+                  "nameLocation": "297:5:10",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 777,
+                  "src": "288:14:10",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IERC1155_$234",
+                    "typeString": "contract IERC1155"
+                  },
+                  "typeName": {
+                    "id": 741,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 740,
+                      "name": "IERC1155",
+                      "nameLocations": [
+                        "288:8:10"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 234,
+                      "src": "288:8:10"
+                    },
+                    "referencedDeclaration": 234,
+                    "src": "288:8:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IERC1155_$234",
+                      "typeString": "contract IERC1155"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 744,
+                  "mutability": "mutable",
+                  "name": "to",
+                  "nameLocation": "312:2:10",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 777,
+                  "src": "304:10:10",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 743,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "304:7:10",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 746,
+                  "mutability": "mutable",
+                  "name": "tokenId",
+                  "nameLocation": "324:7:10",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 777,
+                  "src": "316:15:10",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 745,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "316:7:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 748,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "341:6:10",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 777,
+                  "src": "333:14:10",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 747,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "333:7:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 750,
+                  "mutability": "mutable",
+                  "name": "data",
+                  "nameLocation": "362:4:10",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 777,
+                  "src": "349:17:10",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 749,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "349:5:10",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 752,
+                  "mutability": "mutable",
+                  "name": "sender",
+                  "nameLocation": "376:6:10",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 777,
+                  "src": "368:14:10",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 751,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "368:7:10",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "251:132:10"
+            },
+            "returnParameters": {
+              "id": 754,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "393:0:10"
+            },
+            "scope": 778,
+            "src": "234:325:10",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 779,
+        "src": "154:408:10",
+        "usedErrors": []
+      }
+    ],
+    "src": "33:531:10"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.19+commit.7dd6d404.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.13",
+  "updatedAt": "2023-05-01T09:25:41.937Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
