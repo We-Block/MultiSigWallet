@@ -68,7 +68,7 @@ abstract contract MultiSigWallet is IERC721Receiver, IERC1155Receiver, Ownable {
         TransactionProposal.ProposalStatus status
     )
 {
-    return proposals.getProposal(proposalId);
+    return proposals.getProposal(proposalId,owners);
 }
 
 }

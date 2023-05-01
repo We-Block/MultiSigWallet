@@ -5,16 +5,23 @@ import "./WalletOwners.sol";
 
 library TransactionProposal {
     enum ProposalStatus {Pending, Approved, Executed, Rejected}
+    enum VoteStatus { NotVoted, Voted }
+
 
     struct Proposal {
         uint256 id;
-        ProposalStatus status;
-        uint256 approvals;
-        uint256 rejections;
         address creator;
         address payable to;
         uint256 value;
+        uint256 approvals;
+        uint256 rejections;
+        mapping(address => bool) approved;
+        mapping(address => VoteStatus) votes;
+        ProposalStatus status;
     }
+
+
+
 
     struct Proposals {
         uint256 nextProposalId;
@@ -82,12 +89,21 @@ library TransactionProposal {
         proposal.to.transfer(proposal.value);
     }
     
+    function getDisapprovals(Proposal storage proposal, WalletOwners.Owners storage owners) private view returns (uint256) {
+        uint256 disapprovals = 0;
+        for (uint256 i = 0; i < owners.ownerList.length; i++) {
+            address owner = owners.ownerList[i];
+            if (proposal.votes[owner] == VoteStatus.Voted && !proposal.approved[owner]) {
+                disapprovals++;
+            }
+        }
+        return disapprovals;
+    }
+
+
     
 
-    function getProposal(Proposals storage self, uint256 proposalId)
-    internal
-    view
-    returns (
+    function getProposal(Proposals storage self, uint256 proposalId, WalletOwners.Owners storage owners) internal view returns (
         address creator,
         address to,
         uint256 value,
@@ -95,15 +111,16 @@ library TransactionProposal {
         uint256 disapprovals,
         ProposalStatus status
     )
-{
-    Proposal storage proposal = self.proposals[proposalId];
-    creator = proposal.creator;
-    to = proposal.to;
-    value = proposal.value;
-    approvals = proposal.approvals;
-    disapprovals = proposal.votes - proposal.approvals;
-    status = proposal.status;
-}
+    {
+        Proposal storage proposal = self.proposals[proposalId];
+        creator = proposal.creator;
+        to = proposal.to;
+        value = proposal.value;
+        approvals = proposal.approvals;
+        disapprovals = getDisapprovals(proposal, owners);
+        status = proposal.status;
+    }
+
 
 
 
