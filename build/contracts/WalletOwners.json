@@ -1,29 +1,29 @@
 {
   "contractName": "WalletOwners",
   "abi": [],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/WalletOwners.sol\":\"WalletOwners\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/WalletOwners.sol\":{\"keccak256\":\"0x4ef99014801d5b4ed9b5a5a70637eca22b94a87727da82b8c8be5aa53ace6ac4\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b82e32fc248c1b4da2bff256e69c8701a135fafabf240c7c8a562b8149260ae3\",\"dweb:/ipfs/QmXdEg6nWTmCaYdUywfd25zcmmfTTYwAVexzTCX9qaFFzF\"]}},\"version\":1}",
-  "bytecode": "0x60566050600b82828239805160001a6073146043577f4e487b7100000000000000000000000000000000000000000000000000000000600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea26469706673582212202f562b48e03257d0377518ef8ab10b8071984ca6290fe61a8bc68aaf696f92be64736f6c63430008130033",
-  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea26469706673582212202f562b48e03257d0377518ef8ab10b8071984ca6290fe61a8bc68aaf696f92be64736f6c63430008130033",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/WalletOwners.sol\":\"WalletOwners\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/WalletOwners.sol\":{\"keccak256\":\"0x2ed592d2f9f6f2d01a99422503ae930159cb34ac6e2d24b6cbbdd455ac209d01\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://edac6e2b4c1426c411bd01cc34e3276cf6876a5ba2fd34077d25d23911fa850c\",\"dweb:/ipfs/QmQY6SSyWZZH2d2Cfr6dGG82MkLcWu47w8txFVQnh5ZpGC\"]}},\"version\":1}",
+  "bytecode": "0x60566050600b82828239805160001a6073146043577f4e487b7100000000000000000000000000000000000000000000000000000000600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea26469706673582212208ad1777e6c6d6512252627bbef9e766d141c684409bb78c50a0114da536f1d7264736f6c63430008130033",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea26469706673582212208ad1777e6c6d6512252627bbef9e766d141c684409bb78c50a0114da536f1d7264736f6c63430008130033",
   "immutableReferences": {},
   "generatedSources": [],
   "deployedGeneratedSources": [],
-  "sourceMap": "60:933:15:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
-  "deployedSourceMap": "60:933:15:-:0;;;;;;;;",
-  "source": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.0;\r\n\r\nlibrary WalletOwners {\r\n    struct Owners {\r\n        uint256 count;\r\n        mapping(address => bool) isOwner;\r\n        mapping(address => uint256) index;\r\n        address[] ownerList;\r\n    }\r\n\r\n    function init(Owners storage self, address[] memory _owners) internal {\r\n        require(_owners.length > 0, \"WalletOwners: Owners list cannot be empty\");\r\n        for (uint256 i = 0; i < _owners.length; i++) {\r\n            address owner = _owners[i];\r\n            require(owner != address(0), \"WalletOwners: Owner address cannot be 0\");\r\n            require(!self.isOwner[owner], \"WalletOwners: Duplicate owner in the list\");\r\n            self.isOwner[owner] = true;\r\n            self.index[owner] = i;\r\n            self.ownerList.push(owner);\r\n        }\r\n        self.count = _owners.length;\r\n    }\r\n\r\n    function getOwnersSize(Owners storage self) internal view returns (uint256) {\r\n        return self.ownerList.length;\r\n    }\r\n}\r\n",
+  "sourceMap": "60:1956:15:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "60:1956:15:-:0;;;;;;;;",
+  "source": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.0;\r\n\r\nlibrary WalletOwners {\r\n    struct Owners {\r\n        uint256 count;\r\n        mapping(address => bool) isOwner;\r\n        mapping(address => uint256) index;\r\n        address[] ownerAddresses;\r\n        address[] ownerList;\r\n    }\r\n\r\n\r\n    function init(Owners storage self, address[] memory _owners) internal {\r\n        require(_owners.length > 0, \"WalletOwners: Owners list cannot be empty\");\r\n        for (uint256 i = 0; i < _owners.length; i++) {\r\n            address owner = _owners[i];\r\n            require(owner != address(0), \"WalletOwners: Owner address cannot be 0\");\r\n            require(!self.isOwner[owner], \"WalletOwners: Duplicate owner in the list\");\r\n            self.isOwner[owner] = true;\r\n            self.index[owner] = i;\r\n            self.ownerList.push(owner);\r\n        }\r\n        self.count = _owners.length;\r\n    }\r\n\r\n    function getOwnersSize(Owners storage self) internal view returns (uint256) {\r\n        return self.ownerList.length;\r\n    }\r\n\r\n    function addOwner(Owners storage self, address newOwner) internal {\r\n        require(newOwner != address(0), \"WalletOwners: new owner is the zero address\");\r\n        require(!self.isOwner[newOwner], \"WalletOwners: new owner already exists\");\r\n\r\n        self.ownerAddresses.push(newOwner);\r\n        self.isOwner[newOwner] = true;\r\n    }\r\n\r\n\r\n    function removeOwner(Owners storage self, address ownerToRemove) internal {\r\n        require(self.isOwner[ownerToRemove], \"WalletOwners: owner does not exist\");\r\n        require(self.ownerAddresses.length > 1, \"WalletOwners: cannot remove the last owner\");\r\n\r\n        for (uint256 i = 0; i < self.ownerAddresses.length; i++) {\r\n            if (self.ownerAddresses[i] == ownerToRemove) {\r\n                self.ownerAddresses[i] = self.ownerAddresses[self.ownerAddresses.length - 1];\r\n                self.ownerAddresses.pop();\r\n                break;\r\n            }\r\n        }\r\n\r\n        delete self.isOwner[ownerToRemove];\r\n    }\r\n\r\n\r\n}\r\n",
   "sourcePath": "C:\\Users\\cheny\\Documents\\GitHub\\MultiSigWallet\\contracts\\WalletOwners.sol",
   "ast": {
     "absolutePath": "project:/contracts/WalletOwners.sol",
     "exportedSymbols": {
       "WalletOwners": [
-        1555
+        1751
       ]
     },
-    "id": 1556,
+    "id": 1752,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1440,
+        "id": 1512,
         "literals": [
           "solidity",
           "^",
@@ -40,9 +40,9 @@
         "contractDependencies": [],
         "contractKind": "library",
         "fullyImplemented": true,
-        "id": 1555,
+        "id": 1751,
         "linearizedBaseContracts": [
-          1555
+          1751
         ],
         "name": "WalletOwners",
         "nameLocation": "68:12:15",
@@ -50,16 +50,16 @@
         "nodes": [
           {
             "canonicalName": "WalletOwners.Owners",
-            "id": 1454,
+            "id": 1529,
             "members": [
               {
                 "constant": false,
-                "id": 1442,
+                "id": 1514,
                 "mutability": "mutable",
                 "name": "count",
                 "nameLocation": "121:5:15",
                 "nodeType": "VariableDeclaration",
-                "scope": 1454,
+                "scope": 1529,
                 "src": "113:13:15",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -68,7 +68,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1441,
+                  "id": 1513,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
                   "src": "113:7:15",
@@ -81,12 +81,12 @@
               },
               {
                 "constant": false,
-                "id": 1446,
+                "id": 1518,
                 "mutability": "mutable",
                 "name": "isOwner",
                 "nameLocation": "162:7:15",
                 "nodeType": "VariableDeclaration",
-                "scope": 1454,
+                "scope": 1529,
                 "src": "137:32:15",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -95,11 +95,11 @@
                   "typeString": "mapping(address => bool)"
                 },
                 "typeName": {
-                  "id": 1445,
+                  "id": 1517,
                   "keyName": "",
                   "keyNameLocation": "-1:-1:-1",
                   "keyType": {
-                    "id": 1443,
+                    "id": 1515,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "145:7:15",
@@ -117,7 +117,7 @@
                   "valueName": "",
                   "valueNameLocation": "-1:-1:-1",
                   "valueType": {
-                    "id": 1444,
+                    "id": 1516,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "156:4:15",
@@ -131,12 +131,12 @@
               },
               {
                 "constant": false,
-                "id": 1450,
+                "id": 1522,
                 "mutability": "mutable",
                 "name": "index",
                 "nameLocation": "208:5:15",
                 "nodeType": "VariableDeclaration",
-                "scope": 1454,
+                "scope": 1529,
                 "src": "180:33:15",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -145,11 +145,11 @@
                   "typeString": "mapping(address => uint256)"
                 },
                 "typeName": {
-                  "id": 1449,
+                  "id": 1521,
                   "keyName": "",
                   "keyNameLocation": "-1:-1:-1",
                   "keyType": {
-                    "id": 1447,
+                    "id": 1519,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "188:7:15",
@@ -167,7 +167,7 @@
                   "valueName": "",
                   "valueNameLocation": "-1:-1:-1",
                   "valueType": {
-                    "id": 1448,
+                    "id": 1520,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "199:7:15",
@@ -181,13 +181,13 @@
               },
               {
                 "constant": false,
-                "id": 1453,
+                "id": 1525,
                 "mutability": "mutable",
-                "name": "ownerList",
-                "nameLocation": "234:9:15",
+                "name": "ownerAddresses",
+                "nameLocation": "234:14:15",
                 "nodeType": "VariableDeclaration",
-                "scope": 1454,
-                "src": "224:19:15",
+                "scope": 1529,
+                "src": "224:24:15",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -196,7 +196,7 @@
                 },
                 "typeName": {
                   "baseType": {
-                    "id": 1451,
+                    "id": 1523,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "224:7:15",
@@ -206,9 +206,46 @@
                       "typeString": "address"
                     }
                   },
-                  "id": 1452,
+                  "id": 1524,
                   "nodeType": "ArrayTypeName",
                   "src": "224:9:15",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                    "typeString": "address[]"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1528,
+                "mutability": "mutable",
+                "name": "ownerList",
+                "nameLocation": "269:9:15",
+                "nodeType": "VariableDeclaration",
+                "scope": 1529,
+                "src": "259:19:15",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                  "typeString": "address[]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "id": 1526,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "259:7:15",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 1527,
+                  "nodeType": "ArrayTypeName",
+                  "src": "259:9:15",
                   "typeDescriptions": {
                     "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
                     "typeString": "address[]"
@@ -220,15 +257,15 @@
             "name": "Owners",
             "nameLocation": "95:6:15",
             "nodeType": "StructDefinition",
-            "scope": 1555,
-            "src": "88:163:15",
+            "scope": 1751,
+            "src": "88:198:15",
             "visibility": "public"
           },
           {
             "body": {
-              "id": 1540,
+              "id": 1615,
               "nodeType": "Block",
-              "src": "329:530:15",
+              "src": "366:530:15",
               "statements": [
                 {
                   "expression": {
@@ -238,33 +275,33 @@
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
                         },
-                        "id": 1467,
+                        "id": 1542,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "leftExpression": {
                           "expression": {
-                            "id": 1464,
+                            "id": 1539,
                             "name": "_owners",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1460,
-                            "src": "348:7:15",
+                            "referencedDeclaration": 1535,
+                            "src": "385:7:15",
                             "typeDescriptions": {
                               "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
                               "typeString": "address[] memory"
                             }
                           },
-                          "id": 1465,
+                          "id": 1540,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "lValueRequested": false,
-                          "memberLocation": "356:6:15",
+                          "memberLocation": "393:6:15",
                           "memberName": "length",
                           "nodeType": "MemberAccess",
-                          "src": "348:14:15",
+                          "src": "385:14:15",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -274,21 +311,21 @@
                         "operator": ">",
                         "rightExpression": {
                           "hexValue": "30",
-                          "id": 1466,
+                          "id": 1541,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
                           "kind": "number",
                           "lValueRequested": false,
                           "nodeType": "Literal",
-                          "src": "365:1:15",
+                          "src": "402:1:15",
                           "typeDescriptions": {
                             "typeIdentifier": "t_rational_0_by_1",
                             "typeString": "int_const 0"
                           },
                           "value": "0"
                         },
-                        "src": "348:18:15",
+                        "src": "385:18:15",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
@@ -296,14 +333,14 @@
                       },
                       {
                         "hexValue": "57616c6c65744f776e6572733a204f776e657273206c6973742063616e6e6f7420626520656d707479",
-                        "id": 1468,
+                        "id": 1543,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "string",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "368:43:15",
+                        "src": "405:43:15",
                         "typeDescriptions": {
                           "typeIdentifier": "t_stringliteral_0fa4252b3d9614e041556cd79efdca88fb94cb01ca071ba07de339c7d9522222",
                           "typeString": "literal_string \"WalletOwners: Owners list cannot be empty\""
@@ -322,7 +359,7 @@
                           "typeString": "literal_string \"WalletOwners: Owners list cannot be empty\""
                         }
                       ],
-                      "id": 1463,
+                      "id": 1538,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
@@ -330,13 +367,13 @@
                         4294967278
                       ],
                       "referencedDeclaration": 4294967278,
-                      "src": "340:7:15",
+                      "src": "377:7:15",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
                         "typeString": "function (bool,string memory) pure"
                       }
                     },
-                    "id": 1469,
+                    "id": 1544,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -345,37 +382,37 @@
                     "nameLocations": [],
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "340:72:15",
+                    "src": "377:72:15",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 1470,
+                  "id": 1545,
                   "nodeType": "ExpressionStatement",
-                  "src": "340:72:15"
+                  "src": "377:72:15"
                 },
                 {
                   "body": {
-                    "id": 1531,
+                    "id": 1606,
                     "nodeType": "Block",
-                    "src": "468:346:15",
+                    "src": "505:346:15",
                     "statements": [
                       {
                         "assignments": [
-                          1483
+                          1558
                         ],
                         "declarations": [
                           {
                             "constant": false,
-                            "id": 1483,
+                            "id": 1558,
                             "mutability": "mutable",
                             "name": "owner",
-                            "nameLocation": "491:5:15",
+                            "nameLocation": "528:5:15",
                             "nodeType": "VariableDeclaration",
-                            "scope": 1531,
-                            "src": "483:13:15",
+                            "scope": 1606,
+                            "src": "520:13:15",
                             "stateVariable": false,
                             "storageLocation": "default",
                             "typeDescriptions": {
@@ -383,10 +420,10 @@
                               "typeString": "address"
                             },
                             "typeName": {
-                              "id": 1482,
+                              "id": 1557,
                               "name": "address",
                               "nodeType": "ElementaryTypeName",
-                              "src": "483:7:15",
+                              "src": "520:7:15",
                               "stateMutability": "nonpayable",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_address",
@@ -396,28 +433,28 @@
                             "visibility": "internal"
                           }
                         ],
-                        "id": 1487,
+                        "id": 1562,
                         "initialValue": {
                           "baseExpression": {
-                            "id": 1484,
+                            "id": 1559,
                             "name": "_owners",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1460,
-                            "src": "499:7:15",
+                            "referencedDeclaration": 1535,
+                            "src": "536:7:15",
                             "typeDescriptions": {
                               "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
                               "typeString": "address[] memory"
                             }
                           },
-                          "id": 1486,
+                          "id": 1561,
                           "indexExpression": {
-                            "id": 1485,
+                            "id": 1560,
                             "name": "i",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1472,
-                            "src": "507:1:15",
+                            "referencedDeclaration": 1547,
+                            "src": "544:1:15",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
@@ -428,14 +465,14 @@
                           "isPure": false,
                           "lValueRequested": false,
                           "nodeType": "IndexAccess",
-                          "src": "499:10:15",
+                          "src": "536:10:15",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
                           }
                         },
                         "nodeType": "VariableDeclarationStatement",
-                        "src": "483:26:15"
+                        "src": "520:26:15"
                       },
                       {
                         "expression": {
@@ -445,18 +482,18 @@
                                 "typeIdentifier": "t_address",
                                 "typeString": "address"
                               },
-                              "id": 1494,
+                              "id": 1569,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": false,
                               "lValueRequested": false,
                               "leftExpression": {
-                                "id": 1489,
+                                "id": 1564,
                                 "name": "owner",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1483,
-                                "src": "532:5:15",
+                                "referencedDeclaration": 1558,
+                                "src": "569:5:15",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_address",
                                   "typeString": "address"
@@ -468,14 +505,14 @@
                                 "arguments": [
                                   {
                                     "hexValue": "30",
-                                    "id": 1492,
+                                    "id": 1567,
                                     "isConstant": false,
                                     "isLValue": false,
                                     "isPure": true,
                                     "kind": "number",
                                     "lValueRequested": false,
                                     "nodeType": "Literal",
-                                    "src": "549:1:15",
+                                    "src": "586:1:15",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_rational_0_by_1",
                                       "typeString": "int_const 0"
@@ -490,26 +527,26 @@
                                       "typeString": "int_const 0"
                                     }
                                   ],
-                                  "id": 1491,
+                                  "id": 1566,
                                   "isConstant": false,
                                   "isLValue": false,
                                   "isPure": true,
                                   "lValueRequested": false,
                                   "nodeType": "ElementaryTypeNameExpression",
-                                  "src": "541:7:15",
+                                  "src": "578:7:15",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_type$_t_address_$",
                                     "typeString": "type(address)"
                                   },
                                   "typeName": {
-                                    "id": 1490,
+                                    "id": 1565,
                                     "name": "address",
                                     "nodeType": "ElementaryTypeName",
-                                    "src": "541:7:15",
+                                    "src": "578:7:15",
                                     "typeDescriptions": {}
                                   }
                                 },
-                                "id": 1493,
+                                "id": 1568,
                                 "isConstant": false,
                                 "isLValue": false,
                                 "isPure": true,
@@ -518,14 +555,14 @@
                                 "nameLocations": [],
                                 "names": [],
                                 "nodeType": "FunctionCall",
-                                "src": "541:10:15",
+                                "src": "578:10:15",
                                 "tryCall": false,
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_address",
                                   "typeString": "address"
                                 }
                               },
-                              "src": "532:19:15",
+                              "src": "569:19:15",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_bool",
                                 "typeString": "bool"
@@ -533,14 +570,14 @@
                             },
                             {
                               "hexValue": "57616c6c65744f776e6572733a204f776e657220616464726573732063616e6e6f742062652030",
-                              "id": 1495,
+                              "id": 1570,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": true,
                               "kind": "string",
                               "lValueRequested": false,
                               "nodeType": "Literal",
-                              "src": "553:41:15",
+                              "src": "590:41:15",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_stringliteral_56a74edad48332d29ef81ed26141305faa72ab76893ccb95cd97bf2e0e448522",
                                 "typeString": "literal_string \"WalletOwners: Owner address cannot be 0\""
@@ -559,7 +596,7 @@
                                 "typeString": "literal_string \"WalletOwners: Owner address cannot be 0\""
                               }
                             ],
-                            "id": 1488,
+                            "id": 1563,
                             "name": "require",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [
@@ -567,13 +604,13 @@
                               4294967278
                             ],
                             "referencedDeclaration": 4294967278,
-                            "src": "524:7:15",
+                            "src": "561:7:15",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
                               "typeString": "function (bool,string memory) pure"
                             }
                           },
-                          "id": 1496,
+                          "id": 1571,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -582,22 +619,22 @@
                           "nameLocations": [],
                           "names": [],
                           "nodeType": "FunctionCall",
-                          "src": "524:71:15",
+                          "src": "561:71:15",
                           "tryCall": false,
                           "typeDescriptions": {
                             "typeIdentifier": "t_tuple$__$",
                             "typeString": "tuple()"
                           }
                         },
-                        "id": 1497,
+                        "id": 1572,
                         "nodeType": "ExpressionStatement",
-                        "src": "524:71:15"
+                        "src": "561:71:15"
                       },
                       {
                         "expression": {
                           "arguments": [
                             {
-                              "id": 1503,
+                              "id": 1578,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": false,
@@ -605,44 +642,44 @@
                               "nodeType": "UnaryOperation",
                               "operator": "!",
                               "prefix": true,
-                              "src": "618:20:15",
+                              "src": "655:20:15",
                               "subExpression": {
                                 "baseExpression": {
                                   "expression": {
-                                    "id": 1499,
+                                    "id": 1574,
                                     "name": "self",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
-                                    "referencedDeclaration": 1457,
-                                    "src": "619:4:15",
+                                    "referencedDeclaration": 1532,
+                                    "src": "656:4:15",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_struct$_Owners_$1454_storage_ptr",
+                                      "typeIdentifier": "t_struct$_Owners_$1529_storage_ptr",
                                       "typeString": "struct WalletOwners.Owners storage pointer"
                                     }
                                   },
-                                  "id": 1500,
+                                  "id": 1575,
                                   "isConstant": false,
                                   "isLValue": true,
                                   "isPure": false,
                                   "lValueRequested": false,
-                                  "memberLocation": "624:7:15",
+                                  "memberLocation": "661:7:15",
                                   "memberName": "isOwner",
                                   "nodeType": "MemberAccess",
-                                  "referencedDeclaration": 1446,
-                                  "src": "619:12:15",
+                                  "referencedDeclaration": 1518,
+                                  "src": "656:12:15",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
                                     "typeString": "mapping(address => bool)"
                                   }
                                 },
-                                "id": 1502,
+                                "id": 1577,
                                 "indexExpression": {
-                                  "id": 1501,
+                                  "id": 1576,
                                   "name": "owner",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 1483,
-                                  "src": "632:5:15",
+                                  "referencedDeclaration": 1558,
+                                  "src": "669:5:15",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_address",
                                     "typeString": "address"
@@ -653,7 +690,7 @@
                                 "isPure": false,
                                 "lValueRequested": false,
                                 "nodeType": "IndexAccess",
-                                "src": "619:19:15",
+                                "src": "656:19:15",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_bool",
                                   "typeString": "bool"
@@ -666,14 +703,14 @@
                             },
                             {
                               "hexValue": "57616c6c65744f776e6572733a204475706c6963617465206f776e657220696e20746865206c697374",
-                              "id": 1504,
+                              "id": 1579,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": true,
                               "kind": "string",
                               "lValueRequested": false,
                               "nodeType": "Literal",
-                              "src": "640:43:15",
+                              "src": "677:43:15",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_stringliteral_c49793cbcdc68632df8896aaee537d840fe03843310331875dde849b9ee02aef",
                                 "typeString": "literal_string \"WalletOwners: Duplicate owner in the list\""
@@ -692,7 +729,7 @@
                                 "typeString": "literal_string \"WalletOwners: Duplicate owner in the list\""
                               }
                             ],
-                            "id": 1498,
+                            "id": 1573,
                             "name": "require",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [
@@ -700,13 +737,13 @@
                               4294967278
                             ],
                             "referencedDeclaration": 4294967278,
-                            "src": "610:7:15",
+                            "src": "647:7:15",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
                               "typeString": "function (bool,string memory) pure"
                             }
                           },
-                          "id": 1505,
+                          "id": 1580,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -715,20 +752,20 @@
                           "nameLocations": [],
                           "names": [],
                           "nodeType": "FunctionCall",
-                          "src": "610:74:15",
+                          "src": "647:74:15",
                           "tryCall": false,
                           "typeDescriptions": {
                             "typeIdentifier": "t_tuple$__$",
                             "typeString": "tuple()"
                           }
                         },
-                        "id": 1506,
+                        "id": 1581,
                         "nodeType": "ExpressionStatement",
-                        "src": "610:74:15"
+                        "src": "647:74:15"
                       },
                       {
                         "expression": {
-                          "id": 1513,
+                          "id": 1588,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -736,40 +773,40 @@
                           "leftHandSide": {
                             "baseExpression": {
                               "expression": {
-                                "id": 1507,
+                                "id": 1582,
                                 "name": "self",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1457,
-                                "src": "699:4:15",
+                                "referencedDeclaration": 1532,
+                                "src": "736:4:15",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_struct$_Owners_$1454_storage_ptr",
+                                  "typeIdentifier": "t_struct$_Owners_$1529_storage_ptr",
                                   "typeString": "struct WalletOwners.Owners storage pointer"
                                 }
                               },
-                              "id": 1510,
+                              "id": 1585,
                               "isConstant": false,
                               "isLValue": true,
                               "isPure": false,
                               "lValueRequested": false,
-                              "memberLocation": "704:7:15",
+                              "memberLocation": "741:7:15",
                               "memberName": "isOwner",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 1446,
-                              "src": "699:12:15",
+                              "referencedDeclaration": 1518,
+                              "src": "736:12:15",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
                                 "typeString": "mapping(address => bool)"
                               }
                             },
-                            "id": 1511,
+                            "id": 1586,
                             "indexExpression": {
-                              "id": 1509,
+                              "id": 1584,
                               "name": "owner",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1483,
-                              "src": "712:5:15",
+                              "referencedDeclaration": 1558,
+                              "src": "749:5:15",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_address",
                                 "typeString": "address"
@@ -780,7 +817,7 @@
                             "isPure": false,
                             "lValueRequested": true,
                             "nodeType": "IndexAccess",
-                            "src": "699:19:15",
+                            "src": "736:19:15",
                             "typeDescriptions": {
                               "typeIdentifier": "t_bool",
                               "typeString": "bool"
@@ -790,33 +827,33 @@
                           "operator": "=",
                           "rightHandSide": {
                             "hexValue": "74727565",
-                            "id": 1512,
+                            "id": 1587,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": true,
                             "kind": "bool",
                             "lValueRequested": false,
                             "nodeType": "Literal",
-                            "src": "721:4:15",
+                            "src": "758:4:15",
                             "typeDescriptions": {
                               "typeIdentifier": "t_bool",
                               "typeString": "bool"
                             },
                             "value": "true"
                           },
-                          "src": "699:26:15",
+                          "src": "736:26:15",
                           "typeDescriptions": {
                             "typeIdentifier": "t_bool",
                             "typeString": "bool"
                           }
                         },
-                        "id": 1514,
+                        "id": 1589,
                         "nodeType": "ExpressionStatement",
-                        "src": "699:26:15"
+                        "src": "736:26:15"
                       },
                       {
                         "expression": {
-                          "id": 1521,
+                          "id": 1596,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -824,40 +861,40 @@
                           "leftHandSide": {
                             "baseExpression": {
                               "expression": {
-                                "id": 1515,
+                                "id": 1590,
                                 "name": "self",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1457,
-                                "src": "740:4:15",
+                                "referencedDeclaration": 1532,
+                                "src": "777:4:15",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_struct$_Owners_$1454_storage_ptr",
+                                  "typeIdentifier": "t_struct$_Owners_$1529_storage_ptr",
                                   "typeString": "struct WalletOwners.Owners storage pointer"
                                 }
                               },
-                              "id": 1518,
+                              "id": 1593,
                               "isConstant": false,
                               "isLValue": true,
                               "isPure": false,
                               "lValueRequested": false,
-                              "memberLocation": "745:5:15",
+                              "memberLocation": "782:5:15",
                               "memberName": "index",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 1450,
-                              "src": "740:10:15",
+                              "referencedDeclaration": 1522,
+                              "src": "777:10:15",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
                                 "typeString": "mapping(address => uint256)"
                               }
                             },
-                            "id": 1519,
+                            "id": 1594,
                             "indexExpression": {
-                              "id": 1517,
+                              "id": 1592,
                               "name": "owner",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1483,
-                              "src": "751:5:15",
+                              "referencedDeclaration": 1558,
+                              "src": "788:5:15",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_address",
                                 "typeString": "address"
@@ -868,7 +905,7 @@
                             "isPure": false,
                             "lValueRequested": true,
                             "nodeType": "IndexAccess",
-                            "src": "740:17:15",
+                            "src": "777:17:15",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
@@ -877,37 +914,37 @@
                           "nodeType": "Assignment",
                           "operator": "=",
                           "rightHandSide": {
-                            "id": 1520,
+                            "id": 1595,
                             "name": "i",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1472,
-                            "src": "760:1:15",
+                            "referencedDeclaration": 1547,
+                            "src": "797:1:15",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
                             }
                           },
-                          "src": "740:21:15",
+                          "src": "777:21:15",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           }
                         },
-                        "id": 1522,
+                        "id": 1597,
                         "nodeType": "ExpressionStatement",
-                        "src": "740:21:15"
+                        "src": "777:21:15"
                       },
                       {
                         "expression": {
                           "arguments": [
                             {
-                              "id": 1528,
+                              "id": 1603,
                               "name": "owner",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1483,
-                              "src": "796:5:15",
+                              "referencedDeclaration": 1558,
+                              "src": "833:5:15",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_address",
                                 "typeString": "address"
@@ -923,47 +960,47 @@
                             ],
                             "expression": {
                               "expression": {
-                                "id": 1523,
+                                "id": 1598,
                                 "name": "self",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1457,
-                                "src": "776:4:15",
+                                "referencedDeclaration": 1532,
+                                "src": "813:4:15",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_struct$_Owners_$1454_storage_ptr",
+                                  "typeIdentifier": "t_struct$_Owners_$1529_storage_ptr",
                                   "typeString": "struct WalletOwners.Owners storage pointer"
                                 }
                               },
-                              "id": 1526,
+                              "id": 1601,
                               "isConstant": false,
                               "isLValue": true,
                               "isPure": false,
                               "lValueRequested": false,
-                              "memberLocation": "781:9:15",
+                              "memberLocation": "818:9:15",
                               "memberName": "ownerList",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 1453,
-                              "src": "776:14:15",
+                              "referencedDeclaration": 1528,
+                              "src": "813:14:15",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_array$_t_address_$dyn_storage",
                                 "typeString": "address[] storage ref"
                               }
                             },
-                            "id": 1527,
+                            "id": 1602,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
                             "lValueRequested": false,
-                            "memberLocation": "791:4:15",
+                            "memberLocation": "828:4:15",
                             "memberName": "push",
                             "nodeType": "MemberAccess",
-                            "src": "776:19:15",
+                            "src": "813:19:15",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_arraypush_nonpayable$_t_array$_t_address_$dyn_storage_ptr_$_t_address_$returns$__$attached_to$_t_array$_t_address_$dyn_storage_ptr_$",
                               "typeString": "function (address[] storage pointer,address)"
                             }
                           },
-                          "id": 1529,
+                          "id": 1604,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -972,16 +1009,16 @@
                           "nameLocations": [],
                           "names": [],
                           "nodeType": "FunctionCall",
-                          "src": "776:26:15",
+                          "src": "813:26:15",
                           "tryCall": false,
                           "typeDescriptions": {
                             "typeIdentifier": "t_tuple$__$",
                             "typeString": "tuple()"
                           }
                         },
-                        "id": 1530,
+                        "id": 1605,
                         "nodeType": "ExpressionStatement",
-                        "src": "776:26:15"
+                        "src": "813:26:15"
                       }
                     ]
                   },
@@ -990,18 +1027,18 @@
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     },
-                    "id": 1478,
+                    "id": 1553,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
-                      "id": 1475,
+                      "id": 1550,
                       "name": "i",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1472,
-                      "src": "443:1:15",
+                      "referencedDeclaration": 1547,
+                      "src": "480:1:15",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -1011,52 +1048,52 @@
                     "operator": "<",
                     "rightExpression": {
                       "expression": {
-                        "id": 1476,
+                        "id": 1551,
                         "name": "_owners",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1460,
-                        "src": "447:7:15",
+                        "referencedDeclaration": 1535,
+                        "src": "484:7:15",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
                           "typeString": "address[] memory"
                         }
                       },
-                      "id": 1477,
+                      "id": 1552,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
-                      "memberLocation": "455:6:15",
+                      "memberLocation": "492:6:15",
                       "memberName": "length",
                       "nodeType": "MemberAccess",
-                      "src": "447:14:15",
+                      "src": "484:14:15",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "src": "443:18:15",
+                    "src": "480:18:15",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     }
                   },
-                  "id": 1532,
+                  "id": 1607,
                   "initializationExpression": {
                     "assignments": [
-                      1472
+                      1547
                     ],
                     "declarations": [
                       {
                         "constant": false,
-                        "id": 1472,
+                        "id": 1547,
                         "mutability": "mutable",
                         "name": "i",
-                        "nameLocation": "436:1:15",
+                        "nameLocation": "473:1:15",
                         "nodeType": "VariableDeclaration",
-                        "scope": 1532,
-                        "src": "428:9:15",
+                        "scope": 1607,
+                        "src": "465:9:15",
                         "stateVariable": false,
                         "storageLocation": "default",
                         "typeDescriptions": {
@@ -1064,10 +1101,10 @@
                           "typeString": "uint256"
                         },
                         "typeName": {
-                          "id": 1471,
+                          "id": 1546,
                           "name": "uint256",
                           "nodeType": "ElementaryTypeName",
-                          "src": "428:7:15",
+                          "src": "465:7:15",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -1076,17 +1113,17 @@
                         "visibility": "internal"
                       }
                     ],
-                    "id": 1474,
+                    "id": 1549,
                     "initialValue": {
                       "hexValue": "30",
-                      "id": 1473,
+                      "id": 1548,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
                       "kind": "number",
                       "lValueRequested": false,
                       "nodeType": "Literal",
-                      "src": "440:1:15",
+                      "src": "477:1:15",
                       "typeDescriptions": {
                         "typeIdentifier": "t_rational_0_by_1",
                         "typeString": "int_const 0"
@@ -1094,11 +1131,11 @@
                       "value": "0"
                     },
                     "nodeType": "VariableDeclarationStatement",
-                    "src": "428:13:15"
+                    "src": "465:13:15"
                   },
                   "loopExpression": {
                     "expression": {
-                      "id": 1480,
+                      "id": 1555,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1106,14 +1143,14 @@
                       "nodeType": "UnaryOperation",
                       "operator": "++",
                       "prefix": false,
-                      "src": "463:3:15",
+                      "src": "500:3:15",
                       "subExpression": {
-                        "id": 1479,
+                        "id": 1554,
                         "name": "i",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1472,
-                        "src": "463:1:15",
+                        "referencedDeclaration": 1547,
+                        "src": "500:1:15",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -1124,43 +1161,43 @@
                         "typeString": "uint256"
                       }
                     },
-                    "id": 1481,
+                    "id": 1556,
                     "nodeType": "ExpressionStatement",
-                    "src": "463:3:15"
+                    "src": "500:3:15"
                   },
                   "nodeType": "ForStatement",
-                  "src": "423:391:15"
+                  "src": "460:391:15"
                 },
                 {
                   "expression": {
-                    "id": 1538,
+                    "id": 1613,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "expression": {
-                        "id": 1533,
+                        "id": 1608,
                         "name": "self",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1457,
-                        "src": "824:4:15",
+                        "referencedDeclaration": 1532,
+                        "src": "861:4:15",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Owners_$1454_storage_ptr",
+                          "typeIdentifier": "t_struct$_Owners_$1529_storage_ptr",
                           "typeString": "struct WalletOwners.Owners storage pointer"
                         }
                       },
-                      "id": 1535,
+                      "id": 1610,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": true,
-                      "memberLocation": "829:5:15",
+                      "memberLocation": "866:5:15",
                       "memberName": "count",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1442,
-                      "src": "824:10:15",
+                      "referencedDeclaration": 1514,
+                      "src": "861:10:15",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -1170,86 +1207,86 @@
                     "operator": "=",
                     "rightHandSide": {
                       "expression": {
-                        "id": 1536,
+                        "id": 1611,
                         "name": "_owners",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1460,
-                        "src": "837:7:15",
+                        "referencedDeclaration": 1535,
+                        "src": "874:7:15",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
                           "typeString": "address[] memory"
                         }
                       },
-                      "id": 1537,
+                      "id": 1612,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
-                      "memberLocation": "845:6:15",
+                      "memberLocation": "882:6:15",
                       "memberName": "length",
                       "nodeType": "MemberAccess",
-                      "src": "837:14:15",
+                      "src": "874:14:15",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "src": "824:27:15",
+                    "src": "861:27:15",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "id": 1539,
+                  "id": 1614,
                   "nodeType": "ExpressionStatement",
-                  "src": "824:27:15"
+                  "src": "861:27:15"
                 }
               ]
             },
-            "id": 1541,
+            "id": 1616,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "init",
-            "nameLocation": "268:4:15",
+            "nameLocation": "305:4:15",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1461,
+              "id": 1536,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1457,
+                  "id": 1532,
                   "mutability": "mutable",
                   "name": "self",
-                  "nameLocation": "288:4:15",
+                  "nameLocation": "325:4:15",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1541,
-                  "src": "273:19:15",
+                  "scope": 1616,
+                  "src": "310:19:15",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_Owners_$1454_storage_ptr",
+                    "typeIdentifier": "t_struct$_Owners_$1529_storage_ptr",
                     "typeString": "struct WalletOwners.Owners"
                   },
                   "typeName": {
-                    "id": 1456,
+                    "id": 1531,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 1455,
+                      "id": 1530,
                       "name": "Owners",
                       "nameLocations": [
-                        "273:6:15"
+                        "310:6:15"
                       ],
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 1454,
-                      "src": "273:6:15"
+                      "referencedDeclaration": 1529,
+                      "src": "310:6:15"
                     },
-                    "referencedDeclaration": 1454,
-                    "src": "273:6:15",
+                    "referencedDeclaration": 1529,
+                    "src": "310:6:15",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Owners_$1454_storage_ptr",
+                      "typeIdentifier": "t_struct$_Owners_$1529_storage_ptr",
                       "typeString": "struct WalletOwners.Owners"
                     }
                   },
@@ -1257,13 +1294,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 1460,
+                  "id": 1535,
                   "mutability": "mutable",
                   "name": "_owners",
-                  "nameLocation": "311:7:15",
+                  "nameLocation": "348:7:15",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1541,
-                  "src": "294:24:15",
+                  "scope": 1616,
+                  "src": "331:24:15",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -1272,19 +1309,19 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 1458,
+                      "id": 1533,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
-                      "src": "294:7:15",
+                      "src": "331:7:15",
                       "stateMutability": "nonpayable",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
                       }
                     },
-                    "id": 1459,
+                    "id": 1534,
                     "nodeType": "ArrayTypeName",
-                    "src": "294:9:15",
+                    "src": "331:9:15",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
                       "typeString": "address[]"
@@ -1293,141 +1330,141 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "272:47:15"
+              "src": "309:47:15"
             },
             "returnParameters": {
-              "id": 1462,
+              "id": 1537,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "329:0:15"
+              "src": "366:0:15"
             },
-            "scope": 1555,
-            "src": "259:600:15",
+            "scope": 1751,
+            "src": "296:600:15",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "internal"
           },
           {
             "body": {
-              "id": 1553,
+              "id": 1628,
               "nodeType": "Block",
-              "src": "943:47:15",
+              "src": "980:47:15",
               "statements": [
                 {
                   "expression": {
                     "expression": {
                       "expression": {
-                        "id": 1549,
+                        "id": 1624,
                         "name": "self",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1544,
-                        "src": "961:4:15",
+                        "referencedDeclaration": 1619,
+                        "src": "998:4:15",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Owners_$1454_storage_ptr",
+                          "typeIdentifier": "t_struct$_Owners_$1529_storage_ptr",
                           "typeString": "struct WalletOwners.Owners storage pointer"
                         }
                       },
-                      "id": 1550,
+                      "id": 1625,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": false,
-                      "memberLocation": "966:9:15",
+                      "memberLocation": "1003:9:15",
                       "memberName": "ownerList",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1453,
-                      "src": "961:14:15",
+                      "referencedDeclaration": 1528,
+                      "src": "998:14:15",
                       "typeDescriptions": {
                         "typeIdentifier": "t_array$_t_address_$dyn_storage",
                         "typeString": "address[] storage ref"
                       }
                     },
-                    "id": 1551,
+                    "id": 1626,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
-                    "memberLocation": "976:6:15",
+                    "memberLocation": "1013:6:15",
                     "memberName": "length",
                     "nodeType": "MemberAccess",
-                    "src": "961:21:15",
+                    "src": "998:21:15",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "functionReturnParameters": 1548,
-                  "id": 1552,
+                  "functionReturnParameters": 1623,
+                  "id": 1627,
                   "nodeType": "Return",
-                  "src": "954:28:15"
+                  "src": "991:28:15"
                 }
               ]
             },
-            "id": 1554,
+            "id": 1629,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "getOwnersSize",
-            "nameLocation": "876:13:15",
+            "nameLocation": "913:13:15",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1545,
+              "id": 1620,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1544,
+                  "id": 1619,
                   "mutability": "mutable",
                   "name": "self",
-                  "nameLocation": "905:4:15",
+                  "nameLocation": "942:4:15",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1554,
-                  "src": "890:19:15",
+                  "scope": 1629,
+                  "src": "927:19:15",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_Owners_$1454_storage_ptr",
+                    "typeIdentifier": "t_struct$_Owners_$1529_storage_ptr",
                     "typeString": "struct WalletOwners.Owners"
                   },
                   "typeName": {
-                    "id": 1543,
+                    "id": 1618,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 1542,
+                      "id": 1617,
                       "name": "Owners",
                       "nameLocations": [
-                        "890:6:15"
+                        "927:6:15"
                       ],
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 1454,
-                      "src": "890:6:15"
+                      "referencedDeclaration": 1529,
+                      "src": "927:6:15"
                     },
-                    "referencedDeclaration": 1454,
-                    "src": "890:6:15",
+                    "referencedDeclaration": 1529,
+                    "src": "927:6:15",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Owners_$1454_storage_ptr",
+                      "typeIdentifier": "t_struct$_Owners_$1529_storage_ptr",
                       "typeString": "struct WalletOwners.Owners"
                     }
                   },
                   "visibility": "internal"
                 }
               ],
-              "src": "889:21:15"
+              "src": "926:21:15"
             },
             "returnParameters": {
-              "id": 1548,
+              "id": 1623,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1547,
+                  "id": 1622,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1554,
-                  "src": "934:7:15",
+                  "scope": 1629,
+                  "src": "971:7:15",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1435,10 +1472,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1546,
+                    "id": 1621,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "934:7:15",
+                    "src": "971:7:15",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1447,21 +1484,1541 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "933:9:15"
+              "src": "970:9:15"
             },
-            "scope": 1555,
-            "src": "867:123:15",
+            "scope": 1751,
+            "src": "904:123:15",
             "stateMutability": "view",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 1672,
+              "nodeType": "Block",
+              "src": "1101:269:15",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "commonType": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "id": 1643,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "id": 1638,
+                          "name": "newOwner",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1634,
+                          "src": "1120:8:15",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "!=",
+                        "rightExpression": {
+                          "arguments": [
+                            {
+                              "hexValue": "30",
+                              "id": 1641,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "number",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "1140:1:15",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_rational_0_by_1",
+                                "typeString": "int_const 0"
+                              },
+                              "value": "0"
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_rational_0_by_1",
+                                "typeString": "int_const 0"
+                              }
+                            ],
+                            "id": 1640,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "nodeType": "ElementaryTypeNameExpression",
+                            "src": "1132:7:15",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_address_$",
+                              "typeString": "type(address)"
+                            },
+                            "typeName": {
+                              "id": 1639,
+                              "name": "address",
+                              "nodeType": "ElementaryTypeName",
+                              "src": "1132:7:15",
+                              "typeDescriptions": {}
+                            }
+                          },
+                          "id": 1642,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "typeConversion",
+                          "lValueRequested": false,
+                          "nameLocations": [],
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "1132:10:15",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "src": "1120:22:15",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "hexValue": "57616c6c65744f776e6572733a206e6577206f776e657220697320746865207a65726f2061646472657373",
+                        "id": 1644,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1144:45:15",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_020e00bafd8bc9ef2e6901ba86bd5135a4dbeeedcf611807b34e1f80f77f9979",
+                          "typeString": "literal_string \"WalletOwners: new owner is the zero address\""
+                        },
+                        "value": "WalletOwners: new owner is the zero address"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_020e00bafd8bc9ef2e6901ba86bd5135a4dbeeedcf611807b34e1f80f77f9979",
+                          "typeString": "literal_string \"WalletOwners: new owner is the zero address\""
+                        }
+                      ],
+                      "id": 1637,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
+                      "referencedDeclaration": 4294967278,
+                      "src": "1112:7:15",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 1645,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1112:78:15",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1646,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1112:78:15"
+                },
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 1652,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "UnaryOperation",
+                        "operator": "!",
+                        "prefix": true,
+                        "src": "1209:23:15",
+                        "subExpression": {
+                          "baseExpression": {
+                            "expression": {
+                              "id": 1648,
+                              "name": "self",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 1632,
+                              "src": "1210:4:15",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Owners_$1529_storage_ptr",
+                                "typeString": "struct WalletOwners.Owners storage pointer"
+                              }
+                            },
+                            "id": 1649,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberLocation": "1215:7:15",
+                            "memberName": "isOwner",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 1518,
+                            "src": "1210:12:15",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                              "typeString": "mapping(address => bool)"
+                            }
+                          },
+                          "id": 1651,
+                          "indexExpression": {
+                            "id": 1650,
+                            "name": "newOwner",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1634,
+                            "src": "1223:8:15",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "IndexAccess",
+                          "src": "1210:22:15",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "hexValue": "57616c6c65744f776e6572733a206e6577206f776e657220616c726561647920657869737473",
+                        "id": 1653,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1234:40:15",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_d0d396463ad829b7cda5de7544a5315ee1d5ab880573c4b110b2bf2e89c82bc9",
+                          "typeString": "literal_string \"WalletOwners: new owner already exists\""
+                        },
+                        "value": "WalletOwners: new owner already exists"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_d0d396463ad829b7cda5de7544a5315ee1d5ab880573c4b110b2bf2e89c82bc9",
+                          "typeString": "literal_string \"WalletOwners: new owner already exists\""
+                        }
+                      ],
+                      "id": 1647,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
+                      "referencedDeclaration": 4294967278,
+                      "src": "1201:7:15",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 1654,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1201:74:15",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1655,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1201:74:15"
+                },
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 1661,
+                        "name": "newOwner",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1634,
+                        "src": "1313:8:15",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "expression": {
+                        "expression": {
+                          "id": 1656,
+                          "name": "self",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1632,
+                          "src": "1288:4:15",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Owners_$1529_storage_ptr",
+                            "typeString": "struct WalletOwners.Owners storage pointer"
+                          }
+                        },
+                        "id": 1659,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberLocation": "1293:14:15",
+                        "memberName": "ownerAddresses",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1525,
+                        "src": "1288:19:15",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                          "typeString": "address[] storage ref"
+                        }
+                      },
+                      "id": 1660,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberLocation": "1308:4:15",
+                      "memberName": "push",
+                      "nodeType": "MemberAccess",
+                      "src": "1288:24:15",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_array$_t_address_$dyn_storage_ptr_$_t_address_$returns$__$attached_to$_t_array$_t_address_$dyn_storage_ptr_$",
+                        "typeString": "function (address[] storage pointer,address)"
+                      }
+                    },
+                    "id": 1662,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1288:34:15",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1663,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1288:34:15"
+                },
+                {
+                  "expression": {
+                    "id": 1670,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "baseExpression": {
+                        "expression": {
+                          "id": 1664,
+                          "name": "self",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1632,
+                          "src": "1333:4:15",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Owners_$1529_storage_ptr",
+                            "typeString": "struct WalletOwners.Owners storage pointer"
+                          }
+                        },
+                        "id": 1667,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberLocation": "1338:7:15",
+                        "memberName": "isOwner",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1518,
+                        "src": "1333:12:15",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                          "typeString": "mapping(address => bool)"
+                        }
+                      },
+                      "id": 1668,
+                      "indexExpression": {
+                        "id": 1666,
+                        "name": "newOwner",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1634,
+                        "src": "1346:8:15",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "1333:22:15",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "hexValue": "74727565",
+                      "id": 1669,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "bool",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "1358:4:15",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      "value": "true"
+                    },
+                    "src": "1333:29:15",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 1671,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1333:29:15"
+                }
+              ]
+            },
+            "id": 1673,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "addOwner",
+            "nameLocation": "1044:8:15",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1635,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1632,
+                  "mutability": "mutable",
+                  "name": "self",
+                  "nameLocation": "1068:4:15",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1673,
+                  "src": "1053:19:15",
+                  "stateVariable": false,
+                  "storageLocation": "storage",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Owners_$1529_storage_ptr",
+                    "typeString": "struct WalletOwners.Owners"
+                  },
+                  "typeName": {
+                    "id": 1631,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 1630,
+                      "name": "Owners",
+                      "nameLocations": [
+                        "1053:6:15"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 1529,
+                      "src": "1053:6:15"
+                    },
+                    "referencedDeclaration": 1529,
+                    "src": "1053:6:15",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Owners_$1529_storage_ptr",
+                      "typeString": "struct WalletOwners.Owners"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1634,
+                  "mutability": "mutable",
+                  "name": "newOwner",
+                  "nameLocation": "1082:8:15",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1673,
+                  "src": "1074:16:15",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1633,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1074:7:15",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1052:39:15"
+            },
+            "returnParameters": {
+              "id": 1636,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1101:0:15"
+            },
+            "scope": 1751,
+            "src": "1035:335:15",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 1749,
+              "nodeType": "Block",
+              "src": "1454:555:15",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "baseExpression": {
+                          "expression": {
+                            "id": 1682,
+                            "name": "self",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1676,
+                            "src": "1473:4:15",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_Owners_$1529_storage_ptr",
+                              "typeString": "struct WalletOwners.Owners storage pointer"
+                            }
+                          },
+                          "id": 1683,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberLocation": "1478:7:15",
+                          "memberName": "isOwner",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 1518,
+                          "src": "1473:12:15",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                            "typeString": "mapping(address => bool)"
+                          }
+                        },
+                        "id": 1685,
+                        "indexExpression": {
+                          "id": 1684,
+                          "name": "ownerToRemove",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1678,
+                          "src": "1486:13:15",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "1473:27:15",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "hexValue": "57616c6c65744f776e6572733a206f776e657220646f6573206e6f74206578697374",
+                        "id": 1686,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1502:36:15",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_19e082f3b532b0fd12abf39e19d06c8abc6a20092a272625a7ae4e6bf8236579",
+                          "typeString": "literal_string \"WalletOwners: owner does not exist\""
+                        },
+                        "value": "WalletOwners: owner does not exist"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_19e082f3b532b0fd12abf39e19d06c8abc6a20092a272625a7ae4e6bf8236579",
+                          "typeString": "literal_string \"WalletOwners: owner does not exist\""
+                        }
+                      ],
+                      "id": 1681,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
+                      "referencedDeclaration": 4294967278,
+                      "src": "1465:7:15",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 1687,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1465:74:15",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1688,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1465:74:15"
+                },
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "commonType": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "id": 1694,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "expression": {
+                            "expression": {
+                              "id": 1690,
+                              "name": "self",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 1676,
+                              "src": "1558:4:15",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Owners_$1529_storage_ptr",
+                                "typeString": "struct WalletOwners.Owners storage pointer"
+                              }
+                            },
+                            "id": 1691,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberLocation": "1563:14:15",
+                            "memberName": "ownerAddresses",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 1525,
+                            "src": "1558:19:15",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                              "typeString": "address[] storage ref"
+                            }
+                          },
+                          "id": 1692,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberLocation": "1578:6:15",
+                          "memberName": "length",
+                          "nodeType": "MemberAccess",
+                          "src": "1558:26:15",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": ">",
+                        "rightExpression": {
+                          "hexValue": "31",
+                          "id": 1693,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "number",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "1587:1:15",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_rational_1_by_1",
+                            "typeString": "int_const 1"
+                          },
+                          "value": "1"
+                        },
+                        "src": "1558:30:15",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "hexValue": "57616c6c65744f776e6572733a2063616e6e6f742072656d6f766520746865206c617374206f776e6572",
+                        "id": 1695,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1590:44:15",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_269928fff805613004b2ffcfd9aed6991cf40d8554b53586a1f3044ab4a2efc6",
+                          "typeString": "literal_string \"WalletOwners: cannot remove the last owner\""
+                        },
+                        "value": "WalletOwners: cannot remove the last owner"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_269928fff805613004b2ffcfd9aed6991cf40d8554b53586a1f3044ab4a2efc6",
+                          "typeString": "literal_string \"WalletOwners: cannot remove the last owner\""
+                        }
+                      ],
+                      "id": 1689,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
+                      "referencedDeclaration": 4294967278,
+                      "src": "1550:7:15",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 1696,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1550:85:15",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1697,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1550:85:15"
+                },
+                {
+                  "body": {
+                    "id": 1741,
+                    "nodeType": "Block",
+                    "src": "1705:250:15",
+                    "statements": [
+                      {
+                        "condition": {
+                          "commonType": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          },
+                          "id": 1715,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftExpression": {
+                            "baseExpression": {
+                              "expression": {
+                                "id": 1710,
+                                "name": "self",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 1676,
+                                "src": "1724:4:15",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_struct$_Owners_$1529_storage_ptr",
+                                  "typeString": "struct WalletOwners.Owners storage pointer"
+                                }
+                              },
+                              "id": 1711,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "memberLocation": "1729:14:15",
+                              "memberName": "ownerAddresses",
+                              "nodeType": "MemberAccess",
+                              "referencedDeclaration": 1525,
+                              "src": "1724:19:15",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                                "typeString": "address[] storage ref"
+                              }
+                            },
+                            "id": 1713,
+                            "indexExpression": {
+                              "id": 1712,
+                              "name": "i",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 1699,
+                              "src": "1744:1:15",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            },
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "nodeType": "IndexAccess",
+                            "src": "1724:22:15",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "nodeType": "BinaryOperation",
+                          "operator": "==",
+                          "rightExpression": {
+                            "id": 1714,
+                            "name": "ownerToRemove",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1678,
+                            "src": "1750:13:15",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "src": "1724:39:15",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "id": 1740,
+                        "nodeType": "IfStatement",
+                        "src": "1720:224:15",
+                        "trueBody": {
+                          "id": 1739,
+                          "nodeType": "Block",
+                          "src": "1765:179:15",
+                          "statements": [
+                            {
+                              "expression": {
+                                "id": 1729,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "leftHandSide": {
+                                  "baseExpression": {
+                                    "expression": {
+                                      "id": 1716,
+                                      "name": "self",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 1676,
+                                      "src": "1784:4:15",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_struct$_Owners_$1529_storage_ptr",
+                                        "typeString": "struct WalletOwners.Owners storage pointer"
+                                      }
+                                    },
+                                    "id": 1719,
+                                    "isConstant": false,
+                                    "isLValue": true,
+                                    "isPure": false,
+                                    "lValueRequested": false,
+                                    "memberLocation": "1789:14:15",
+                                    "memberName": "ownerAddresses",
+                                    "nodeType": "MemberAccess",
+                                    "referencedDeclaration": 1525,
+                                    "src": "1784:19:15",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                                      "typeString": "address[] storage ref"
+                                    }
+                                  },
+                                  "id": 1720,
+                                  "indexExpression": {
+                                    "id": 1718,
+                                    "name": "i",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 1699,
+                                    "src": "1804:1:15",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    }
+                                  },
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": true,
+                                  "nodeType": "IndexAccess",
+                                  "src": "1784:22:15",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                  }
+                                },
+                                "nodeType": "Assignment",
+                                "operator": "=",
+                                "rightHandSide": {
+                                  "baseExpression": {
+                                    "expression": {
+                                      "id": 1721,
+                                      "name": "self",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 1676,
+                                      "src": "1809:4:15",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_struct$_Owners_$1529_storage_ptr",
+                                        "typeString": "struct WalletOwners.Owners storage pointer"
+                                      }
+                                    },
+                                    "id": 1722,
+                                    "isConstant": false,
+                                    "isLValue": true,
+                                    "isPure": false,
+                                    "lValueRequested": false,
+                                    "memberLocation": "1814:14:15",
+                                    "memberName": "ownerAddresses",
+                                    "nodeType": "MemberAccess",
+                                    "referencedDeclaration": 1525,
+                                    "src": "1809:19:15",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                                      "typeString": "address[] storage ref"
+                                    }
+                                  },
+                                  "id": 1728,
+                                  "indexExpression": {
+                                    "commonType": {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    },
+                                    "id": 1727,
+                                    "isConstant": false,
+                                    "isLValue": false,
+                                    "isPure": false,
+                                    "lValueRequested": false,
+                                    "leftExpression": {
+                                      "expression": {
+                                        "expression": {
+                                          "id": 1723,
+                                          "name": "self",
+                                          "nodeType": "Identifier",
+                                          "overloadedDeclarations": [],
+                                          "referencedDeclaration": 1676,
+                                          "src": "1829:4:15",
+                                          "typeDescriptions": {
+                                            "typeIdentifier": "t_struct$_Owners_$1529_storage_ptr",
+                                            "typeString": "struct WalletOwners.Owners storage pointer"
+                                          }
+                                        },
+                                        "id": 1724,
+                                        "isConstant": false,
+                                        "isLValue": true,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "memberLocation": "1834:14:15",
+                                        "memberName": "ownerAddresses",
+                                        "nodeType": "MemberAccess",
+                                        "referencedDeclaration": 1525,
+                                        "src": "1829:19:15",
+                                        "typeDescriptions": {
+                                          "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                                          "typeString": "address[] storage ref"
+                                        }
+                                      },
+                                      "id": 1725,
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "lValueRequested": false,
+                                      "memberLocation": "1849:6:15",
+                                      "memberName": "length",
+                                      "nodeType": "MemberAccess",
+                                      "src": "1829:26:15",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                      }
+                                    },
+                                    "nodeType": "BinaryOperation",
+                                    "operator": "-",
+                                    "rightExpression": {
+                                      "hexValue": "31",
+                                      "id": 1726,
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "kind": "number",
+                                      "lValueRequested": false,
+                                      "nodeType": "Literal",
+                                      "src": "1858:1:15",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_rational_1_by_1",
+                                        "typeString": "int_const 1"
+                                      },
+                                      "value": "1"
+                                    },
+                                    "src": "1829:30:15",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    }
+                                  },
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "nodeType": "IndexAccess",
+                                  "src": "1809:51:15",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                  }
+                                },
+                                "src": "1784:76:15",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                }
+                              },
+                              "id": 1730,
+                              "nodeType": "ExpressionStatement",
+                              "src": "1784:76:15"
+                            },
+                            {
+                              "expression": {
+                                "arguments": [],
+                                "expression": {
+                                  "argumentTypes": [],
+                                  "expression": {
+                                    "expression": {
+                                      "id": 1731,
+                                      "name": "self",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 1676,
+                                      "src": "1879:4:15",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_struct$_Owners_$1529_storage_ptr",
+                                        "typeString": "struct WalletOwners.Owners storage pointer"
+                                      }
+                                    },
+                                    "id": 1734,
+                                    "isConstant": false,
+                                    "isLValue": true,
+                                    "isPure": false,
+                                    "lValueRequested": false,
+                                    "memberLocation": "1884:14:15",
+                                    "memberName": "ownerAddresses",
+                                    "nodeType": "MemberAccess",
+                                    "referencedDeclaration": 1525,
+                                    "src": "1879:19:15",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                                      "typeString": "address[] storage ref"
+                                    }
+                                  },
+                                  "id": 1735,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "memberLocation": "1899:3:15",
+                                  "memberName": "pop",
+                                  "nodeType": "MemberAccess",
+                                  "src": "1879:23:15",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_function_arraypop_nonpayable$_t_array$_t_address_$dyn_storage_ptr_$returns$__$attached_to$_t_array$_t_address_$dyn_storage_ptr_$",
+                                    "typeString": "function (address[] storage pointer)"
+                                  }
+                                },
+                                "id": 1736,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "kind": "functionCall",
+                                "lValueRequested": false,
+                                "nameLocations": [],
+                                "names": [],
+                                "nodeType": "FunctionCall",
+                                "src": "1879:25:15",
+                                "tryCall": false,
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_tuple$__$",
+                                  "typeString": "tuple()"
+                                }
+                              },
+                              "id": 1737,
+                              "nodeType": "ExpressionStatement",
+                              "src": "1879:25:15"
+                            },
+                            {
+                              "id": 1738,
+                              "nodeType": "Break",
+                              "src": "1923:5:15"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  },
+                  "condition": {
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 1706,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "id": 1702,
+                      "name": "i",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1699,
+                      "src": "1668:1:15",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "<",
+                    "rightExpression": {
+                      "expression": {
+                        "expression": {
+                          "id": 1703,
+                          "name": "self",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1676,
+                          "src": "1672:4:15",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Owners_$1529_storage_ptr",
+                            "typeString": "struct WalletOwners.Owners storage pointer"
+                          }
+                        },
+                        "id": 1704,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberLocation": "1677:14:15",
+                        "memberName": "ownerAddresses",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1525,
+                        "src": "1672:19:15",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                          "typeString": "address[] storage ref"
+                        }
+                      },
+                      "id": 1705,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberLocation": "1692:6:15",
+                      "memberName": "length",
+                      "nodeType": "MemberAccess",
+                      "src": "1672:26:15",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "1668:30:15",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 1742,
+                  "initializationExpression": {
+                    "assignments": [
+                      1699
+                    ],
+                    "declarations": [
+                      {
+                        "constant": false,
+                        "id": 1699,
+                        "mutability": "mutable",
+                        "name": "i",
+                        "nameLocation": "1661:1:15",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 1742,
+                        "src": "1653:9:15",
+                        "stateVariable": false,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "typeName": {
+                          "id": 1698,
+                          "name": "uint256",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "1653:7:15",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "visibility": "internal"
+                      }
+                    ],
+                    "id": 1701,
+                    "initialValue": {
+                      "hexValue": "30",
+                      "id": 1700,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "1665:1:15",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_0_by_1",
+                        "typeString": "int_const 0"
+                      },
+                      "value": "0"
+                    },
+                    "nodeType": "VariableDeclarationStatement",
+                    "src": "1653:13:15"
+                  },
+                  "loopExpression": {
+                    "expression": {
+                      "id": 1708,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "UnaryOperation",
+                      "operator": "++",
+                      "prefix": false,
+                      "src": "1700:3:15",
+                      "subExpression": {
+                        "id": 1707,
+                        "name": "i",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1699,
+                        "src": "1700:1:15",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 1709,
+                    "nodeType": "ExpressionStatement",
+                    "src": "1700:3:15"
+                  },
+                  "nodeType": "ForStatement",
+                  "src": "1648:307:15"
+                },
+                {
+                  "expression": {
+                    "id": 1747,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "UnaryOperation",
+                    "operator": "delete",
+                    "prefix": true,
+                    "src": "1967:34:15",
+                    "subExpression": {
+                      "baseExpression": {
+                        "expression": {
+                          "id": 1743,
+                          "name": "self",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1676,
+                          "src": "1974:4:15",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Owners_$1529_storage_ptr",
+                            "typeString": "struct WalletOwners.Owners storage pointer"
+                          }
+                        },
+                        "id": 1744,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberLocation": "1979:7:15",
+                        "memberName": "isOwner",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1518,
+                        "src": "1974:12:15",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                          "typeString": "mapping(address => bool)"
+                        }
+                      },
+                      "id": 1746,
+                      "indexExpression": {
+                        "id": 1745,
+                        "name": "ownerToRemove",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1678,
+                        "src": "1987:13:15",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "1974:27:15",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1748,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1967:34:15"
+                }
+              ]
+            },
+            "id": 1750,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "removeOwner",
+            "nameLocation": "1389:11:15",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1679,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1676,
+                  "mutability": "mutable",
+                  "name": "self",
+                  "nameLocation": "1416:4:15",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1750,
+                  "src": "1401:19:15",
+                  "stateVariable": false,
+                  "storageLocation": "storage",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Owners_$1529_storage_ptr",
+                    "typeString": "struct WalletOwners.Owners"
+                  },
+                  "typeName": {
+                    "id": 1675,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 1674,
+                      "name": "Owners",
+                      "nameLocations": [
+                        "1401:6:15"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 1529,
+                      "src": "1401:6:15"
+                    },
+                    "referencedDeclaration": 1529,
+                    "src": "1401:6:15",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Owners_$1529_storage_ptr",
+                      "typeString": "struct WalletOwners.Owners"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1678,
+                  "mutability": "mutable",
+                  "name": "ownerToRemove",
+                  "nameLocation": "1430:13:15",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1750,
+                  "src": "1422:21:15",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1677,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1422:7:15",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1400:44:15"
+            },
+            "returnParameters": {
+              "id": 1680,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1454:0:15"
+            },
+            "scope": 1751,
+            "src": "1380:629:15",
+            "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "internal"
           }
         ],
-        "scope": 1556,
-        "src": "60:933:15",
+        "scope": 1752,
+        "src": "60:1956:15",
         "usedErrors": []
       }
     ],
-    "src": "33:962:15"
+    "src": "33:1985:15"
   },
   "compiler": {
     "name": "solc",
@@ -1469,7 +3026,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.13",
-  "updatedAt": "2023-05-01T13:47:30.144Z",
+  "updatedAt": "2023-05-01T14:07:33.552Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

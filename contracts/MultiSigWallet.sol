@@ -32,9 +32,21 @@ abstract contract MultiSigWallet is IERC721Receiver, IERC1155Receiver, Ownable {
         WalletETH.deposit(msg.sender, msg.value);
     }
 
-    function createProposal(address payable to, uint256 value) public returns (uint256) {
-        return proposals.create(owners, to, value, msg.sender);
+    function addNewOwner(address newOwner) public onlyOwner {
+        WalletOwners.addOwner(owners, newOwner);
     }
+
+
+    function removeOwner(address ownerToRemove) public onlyOwner {
+        owners.removeOwner(ownerToRemove);
+    }
+
+
+    function createProposal(address payable to, uint256 value, uint256 expiresIn) public returns (uint256) {
+        require(owners.isOwner[msg.sender], "MultiSigWallet: caller is not an owner");
+        return proposals.create(owners, to, value, msg.sender, expiresIn);
+    }
+
 
     function voteProposal(uint256 proposalId, bool approve) public {
         proposals.vote(owners, proposalId, approve, msg.sender);

@@ -15,6 +15,7 @@ library TransactionProposal {
         uint256 value;
         uint256 approvals;
         uint256 rejections;
+        uint256 expiration;
         mapping(address => bool) approved;
         mapping(address => VoteStatus) votes;
         ProposalStatus status;
@@ -34,7 +35,8 @@ library TransactionProposal {
         WalletOwners.Owners storage owners,
         address payable to,
         uint256 value,
-        address creator
+        address creator,
+        uint256 expiresIn
     ) internal returns (uint256) {
         require(owners.isOwner[creator], "TransactionProposal: Only wallet owners can create proposals");
         uint256 proposalId = self.nextProposalId;
@@ -46,9 +48,11 @@ library TransactionProposal {
         proposal.creator = creator;
         proposal.to = to;
         proposal.value = value;
+        proposal.expiration = block.timestamp + expiresIn;
 
         return proposalId;
     }
+
 
     function vote(
         Proposals storage self,
@@ -60,6 +64,7 @@ library TransactionProposal {
         require(owners.isOwner[voter], "TransactionProposal: Only wallet owners can vote");
         Proposal storage proposal = self.proposals[proposalId];
         require(proposal.status == ProposalStatus.Pending, "TransactionProposal: Proposal is not pending");
+        require(block.timestamp <= proposal.expiration, "TransactionProposal: Proposal has expired");
         require(!self.voted[proposalId][voter], "TransactionProposal: Owner has already voted");
 
         if (approve) {
@@ -85,6 +90,7 @@ library TransactionProposal {
     function execute(Proposals storage self, uint256 proposalId) internal {
         Proposal storage proposal = self.proposals[proposalId];
         require(proposal.status == ProposalStatus.Approved, "TransactionProposal: Proposal is not approved");
+        require(block.timestamp <= proposal.expiration, "TransactionProposal: Proposal has expired");
         proposal.status = ProposalStatus.Executed;
         proposal.to.transfer(proposal.value);
     }

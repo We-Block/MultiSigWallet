@@ -309,15 +309,15 @@
         487
       ],
       "TokenReceiver": [
-        783
+        824
       ]
     },
-    "id": 784,
+    "id": 825,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 741,
+        "id": 782,
         "literals": [
           "solidity",
           "^",
@@ -330,10 +330,10 @@
       {
         "absolutePath": "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol",
         "file": "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol",
-        "id": 742,
+        "id": 783,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 784,
+        "scope": 825,
         "sourceUnit": 488,
         "src": "60:66:9",
         "symbolAliases": [],
@@ -342,10 +342,10 @@
       {
         "absolutePath": "@openzeppelin/contracts/token/ERC1155/IERC1155Receiver.sol",
         "file": "@openzeppelin/contracts/token/ERC1155/IERC1155Receiver.sol",
-        "id": 743,
+        "id": 784,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 784,
+        "scope": 825,
         "sourceUnit": 276,
         "src": "128:68:9",
         "symbolAliases": [],
@@ -358,9 +358,9 @@
         "contractDependencies": [],
         "contractKind": "library",
         "fullyImplemented": true,
-        "id": 783,
+        "id": 824,
         "linearizedBaseContracts": [
-          783
+          824
         ],
         "name": "TokenReceiver",
         "nameLocation": "208:13:9",
@@ -368,7 +368,7 @@
         "nodes": [
           {
             "body": {
-              "id": 755,
+              "id": 796,
               "nodeType": "Block",
               "src": "288:94:9",
               "statements": [
@@ -379,7 +379,7 @@
                         "arguments": [
                           {
                             "hexValue": "6f6e455243373231526563656976656428616464726573732c616464726573732c75696e743235362c627974657329",
-                            "id": 751,
+                            "id": 792,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": true,
@@ -401,7 +401,7 @@
                               "typeString": "literal_string \"onERC721Received(address,address,uint256,bytes)\""
                             }
                           ],
-                          "id": 750,
+                          "id": 791,
                           "name": "keccak256",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
@@ -412,7 +412,7 @@
                             "typeString": "function (bytes memory) pure returns (bytes32)"
                           }
                         },
-                        "id": 752,
+                        "id": 793,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -436,7 +436,7 @@
                           "typeString": "bytes32"
                         }
                       ],
-                      "id": 749,
+                      "id": 790,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -448,14 +448,14 @@
                         "typeString": "type(bytes4)"
                       },
                       "typeName": {
-                        "id": 748,
+                        "id": 789,
                         "name": "bytes4",
                         "nodeType": "ElementaryTypeName",
                         "src": "306:6:9",
                         "typeDescriptions": {}
                       }
                     },
-                    "id": 753,
+                    "id": 794,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -471,15 +471,15 @@
                       "typeString": "bytes4"
                     }
                   },
-                  "functionReturnParameters": 747,
-                  "id": 754,
+                  "functionReturnParameters": 788,
+                  "id": 795,
                   "nodeType": "Return",
                   "src": "299:75:9"
                 }
               ]
             },
             "functionSelector": "a8fcc417",
-            "id": 756,
+            "id": 797,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -487,23 +487,23 @@
             "nameLocation": "238:16:9",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 744,
+              "id": 785,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "254:2:9"
             },
             "returnParameters": {
-              "id": 747,
+              "id": 788,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 746,
+                  "id": 787,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 756,
+                  "scope": 797,
                   "src": "280:6:9",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -512,7 +512,7 @@
                     "typeString": "bytes4"
                   },
                   "typeName": {
-                    "id": 745,
+                    "id": 786,
                     "name": "bytes4",
                     "nodeType": "ElementaryTypeName",
                     "src": "280:6:9",
@@ -526,7 +526,7 @@
               ],
               "src": "279:8:9"
             },
-            "scope": 783,
+            "scope": 824,
             "src": "229:153:9",
             "stateMutability": "pure",
             "virtual": false,
@@ -534,7 +534,7 @@
           },
           {
             "body": {
-              "id": 768,
+              "id": 809,
               "nodeType": "Block",
               "src": "450:103:9",
               "statements": [
@@ -545,7 +545,7 @@
                         "arguments": [
                           {
                             "hexValue": "6f6e45524331313535526563656976656428616464726573732c616464726573732c75696e743235362c75696e743235362c627974657329",
-                            "id": 764,
+                            "id": 805,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": true,
@@ -567,7 +567,7 @@
                               "typeString": "literal_string \"onERC1155Received(address,address,uint256,uint256,bytes)\""
                             }
                           ],
-                          "id": 763,
+                          "id": 804,
                           "name": "keccak256",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
@@ -578,7 +578,7 @@
                             "typeString": "function (bytes memory) pure returns (bytes32)"
                           }
                         },
-                        "id": 765,
+                        "id": 806,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -602,7 +602,7 @@
                           "typeString": "bytes32"
                         }
                       ],
-                      "id": 762,
+                      "id": 803,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -614,14 +614,14 @@
                         "typeString": "type(bytes4)"
                       },
                       "typeName": {
-                        "id": 761,
+                        "id": 802,
                         "name": "bytes4",
                         "nodeType": "ElementaryTypeName",
                         "src": "468:6:9",
                         "typeDescriptions": {}
                       }
                     },
-                    "id": 766,
+                    "id": 807,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -637,15 +637,15 @@
                       "typeString": "bytes4"
                     }
                   },
-                  "functionReturnParameters": 760,
-                  "id": 767,
+                  "functionReturnParameters": 801,
+                  "id": 808,
                   "nodeType": "Return",
                   "src": "461:84:9"
                 }
               ]
             },
             "functionSelector": "a38d190d",
-            "id": 769,
+            "id": 810,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -653,23 +653,23 @@
             "nameLocation": "399:17:9",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 757,
+              "id": 798,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "416:2:9"
             },
             "returnParameters": {
-              "id": 760,
+              "id": 801,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 759,
+                  "id": 800,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 769,
+                  "scope": 810,
                   "src": "442:6:9",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -678,7 +678,7 @@
                     "typeString": "bytes4"
                   },
                   "typeName": {
-                    "id": 758,
+                    "id": 799,
                     "name": "bytes4",
                     "nodeType": "ElementaryTypeName",
                     "src": "442:6:9",
@@ -692,7 +692,7 @@
               ],
               "src": "441:8:9"
             },
-            "scope": 783,
+            "scope": 824,
             "src": "390:163:9",
             "stateMutability": "pure",
             "virtual": false,
@@ -700,7 +700,7 @@
           },
           {
             "body": {
-              "id": 781,
+              "id": 822,
               "nodeType": "Block",
               "src": "626:112:9",
               "statements": [
@@ -711,7 +711,7 @@
                         "arguments": [
                           {
                             "hexValue": "6f6e455243313135354261746368526563656976656428616464726573732c616464726573732c75696e743235365b5d2c75696e743235365b5d2c627974657329",
-                            "id": 777,
+                            "id": 818,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": true,
@@ -733,7 +733,7 @@
                               "typeString": "literal_string \"onERC1155BatchReceived(address,address,uint256[],uint256[],bytes)\""
                             }
                           ],
-                          "id": 776,
+                          "id": 817,
                           "name": "keccak256",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
@@ -744,7 +744,7 @@
                             "typeString": "function (bytes memory) pure returns (bytes32)"
                           }
                         },
-                        "id": 778,
+                        "id": 819,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -768,7 +768,7 @@
                           "typeString": "bytes32"
                         }
                       ],
-                      "id": 775,
+                      "id": 816,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -780,14 +780,14 @@
                         "typeString": "type(bytes4)"
                       },
                       "typeName": {
-                        "id": 774,
+                        "id": 815,
                         "name": "bytes4",
                         "nodeType": "ElementaryTypeName",
                         "src": "644:6:9",
                         "typeDescriptions": {}
                       }
                     },
-                    "id": 779,
+                    "id": 820,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -803,15 +803,15 @@
                       "typeString": "bytes4"
                     }
                   },
-                  "functionReturnParameters": 773,
-                  "id": 780,
+                  "functionReturnParameters": 814,
+                  "id": 821,
                   "nodeType": "Return",
                   "src": "637:93:9"
                 }
               ]
             },
             "functionSelector": "3dae9a2b",
-            "id": 782,
+            "id": 823,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -819,23 +819,23 @@
             "nameLocation": "570:22:9",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 770,
+              "id": 811,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "592:2:9"
             },
             "returnParameters": {
-              "id": 773,
+              "id": 814,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 772,
+                  "id": 813,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 782,
+                  "scope": 823,
                   "src": "618:6:9",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -844,7 +844,7 @@
                     "typeString": "bytes4"
                   },
                   "typeName": {
-                    "id": 771,
+                    "id": 812,
                     "name": "bytes4",
                     "nodeType": "ElementaryTypeName",
                     "src": "618:6:9",
@@ -858,14 +858,14 @@
               ],
               "src": "617:8:9"
             },
-            "scope": 783,
+            "scope": 824,
             "src": "561:177:9",
             "stateMutability": "pure",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 784,
+        "scope": 825,
         "src": "200:541:9",
         "usedErrors": []
       }
@@ -878,7 +878,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.13",
-  "updatedAt": "2023-05-01T13:47:30.137Z",
+  "updatedAt": "2023-05-01T14:07:33.544Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

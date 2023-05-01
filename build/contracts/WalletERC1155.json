@@ -1,9 +1,9 @@
 {
   "contractName": "WalletERC1155",
   "abi": [],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/WalletERC1155.sol\":\"WalletERC1155\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/token/ERC1155/IERC1155.sol\":{\"keccak256\":\"0x6392f2cfe3a5ee802227fe7a2dfd47096d881aec89bddd214b35c5b46d3cd941\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://bd9c47a375639888e726a99da718890ba16d17d7ad9eacb0ccc892d46d1b3ee0\",\"dweb:/ipfs/Qmb41W5RUjy2sWg49A2rMnxekSeEk6SvGyJL5tyCCSr7un\"]},\"@openzeppelin/contracts/utils/introspection/IERC165.sol\":{\"keccak256\":\"0x447a5f3ddc18419d41ff92b3773fb86471b1db25773e07f877f548918a185bf1\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://be161e54f24e5c6fae81a12db1a8ae87bc5ae1b0ddc805d82a1440a68455088f\",\"dweb:/ipfs/QmP7C3CHdY9urF4dEMb9wmsp1wMxHF6nhA2yQE5SKiPAdy\"]},\"project:/contracts/WalletERC1155.sol\":{\"keccak256\":\"0x7c19663376249141484e718535875c14ba240f10e7d3b0d716c783b5a76b2508\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://95bab3a6ddfdd91a8c665c99c7c5793e86bdee78697ddb1572d62713d1838663\",\"dweb:/ipfs/QmchoerohVQXh5vpL22Q4Q8WHb7Ard56nhyvxGoHqZD1qa\"]},\"project:/contracts/WalletOwners.sol\":{\"keccak256\":\"0x4ef99014801d5b4ed9b5a5a70637eca22b94a87727da82b8c8be5aa53ace6ac4\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b82e32fc248c1b4da2bff256e69c8701a135fafabf240c7c8a562b8149260ae3\",\"dweb:/ipfs/QmXdEg6nWTmCaYdUywfd25zcmmfTTYwAVexzTCX9qaFFzF\"]}},\"version\":1}",
-  "bytecode": "0x60566050600b82828239805160001a6073146043577f4e487b7100000000000000000000000000000000000000000000000000000000600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea26469706673582212201aa7788eaa37c82432d287f70f282d97bd9822ed0e023323fe12261b56087ef264736f6c63430008130033",
-  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea26469706673582212201aa7788eaa37c82432d287f70f282d97bd9822ed0e023323fe12261b56087ef264736f6c63430008130033",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/WalletERC1155.sol\":\"WalletERC1155\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/token/ERC1155/IERC1155.sol\":{\"keccak256\":\"0x6392f2cfe3a5ee802227fe7a2dfd47096d881aec89bddd214b35c5b46d3cd941\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://bd9c47a375639888e726a99da718890ba16d17d7ad9eacb0ccc892d46d1b3ee0\",\"dweb:/ipfs/Qmb41W5RUjy2sWg49A2rMnxekSeEk6SvGyJL5tyCCSr7un\"]},\"@openzeppelin/contracts/utils/introspection/IERC165.sol\":{\"keccak256\":\"0x447a5f3ddc18419d41ff92b3773fb86471b1db25773e07f877f548918a185bf1\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://be161e54f24e5c6fae81a12db1a8ae87bc5ae1b0ddc805d82a1440a68455088f\",\"dweb:/ipfs/QmP7C3CHdY9urF4dEMb9wmsp1wMxHF6nhA2yQE5SKiPAdy\"]},\"project:/contracts/WalletERC1155.sol\":{\"keccak256\":\"0x7c19663376249141484e718535875c14ba240f10e7d3b0d716c783b5a76b2508\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://95bab3a6ddfdd91a8c665c99c7c5793e86bdee78697ddb1572d62713d1838663\",\"dweb:/ipfs/QmchoerohVQXh5vpL22Q4Q8WHb7Ard56nhyvxGoHqZD1qa\"]},\"project:/contracts/WalletOwners.sol\":{\"keccak256\":\"0x2ed592d2f9f6f2d01a99422503ae930159cb34ac6e2d24b6cbbdd455ac209d01\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://edac6e2b4c1426c411bd01cc34e3276cf6876a5ba2fd34077d25d23911fa850c\",\"dweb:/ipfs/QmQY6SSyWZZH2d2Cfr6dGG82MkLcWu47w8txFVQnh5ZpGC\"]}},\"version\":1}",
+  "bytecode": "0x60566050600b82828239805160001a6073146043577f4e487b7100000000000000000000000000000000000000000000000000000000600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea26469706673582212209cfc5f0665addb9f1d730776d8a013e9ec856c476cd466e54a7ad861fbc8da3b64736f6c63430008130033",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea26469706673582212209cfc5f0665addb9f1d730776d8a013e9ec856c476cd466e54a7ad861fbc8da3b64736f6c63430008130033",
   "immutableReferences": {},
   "generatedSources": [],
   "deployedGeneratedSources": [],
@@ -21,18 +21,18 @@
         521
       ],
       "WalletERC1155": [
-        1248
+        1320
       ],
       "WalletOwners": [
-        1555
+        1751
       ]
     },
-    "id": 1249,
+    "id": 1321,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1200,
+        "id": 1272,
         "literals": [
           "solidity",
           "^",
@@ -45,10 +45,10 @@
       {
         "absolutePath": "@openzeppelin/contracts/token/ERC1155/IERC1155.sol",
         "file": "@openzeppelin/contracts/token/ERC1155/IERC1155.sol",
-        "id": 1201,
+        "id": 1273,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 1249,
+        "scope": 1321,
         "sourceUnit": 235,
         "src": "60:60:11",
         "symbolAliases": [],
@@ -57,11 +57,11 @@
       {
         "absolutePath": "project:/contracts/WalletOwners.sol",
         "file": "./WalletOwners.sol",
-        "id": 1202,
+        "id": 1274,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 1249,
-        "sourceUnit": 1556,
+        "scope": 1321,
+        "sourceUnit": 1752,
         "src": "122:28:11",
         "symbolAliases": [],
         "unitAlias": ""
@@ -73,9 +73,9 @@
         "contractDependencies": [],
         "contractKind": "library",
         "fullyImplemented": true,
-        "id": 1248,
+        "id": 1320,
         "linearizedBaseContracts": [
-          1248
+          1320
         ],
         "name": "WalletERC1155",
         "nameLocation": "162:13:11",
@@ -83,44 +83,44 @@
         "nodes": [
           {
             "global": false,
-            "id": 1206,
+            "id": 1278,
             "libraryName": {
-              "id": 1203,
+              "id": 1275,
               "name": "WalletOwners",
               "nameLocations": [
                 "189:12:11"
               ],
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 1555,
+              "referencedDeclaration": 1751,
               "src": "189:12:11"
             },
             "nodeType": "UsingForDirective",
             "src": "183:43:11",
             "typeName": {
-              "id": 1205,
+              "id": 1277,
               "nodeType": "UserDefinedTypeName",
               "pathNode": {
-                "id": 1204,
+                "id": 1276,
                 "name": "WalletOwners.Owners",
                 "nameLocations": [
                   "206:12:11",
                   "219:6:11"
                 ],
                 "nodeType": "IdentifierPath",
-                "referencedDeclaration": 1454,
+                "referencedDeclaration": 1529,
                 "src": "206:19:11"
               },
-              "referencedDeclaration": 1454,
+              "referencedDeclaration": 1529,
               "src": "206:19:11",
               "typeDescriptions": {
-                "typeIdentifier": "t_struct$_Owners_$1454_storage_ptr",
+                "typeIdentifier": "t_struct$_Owners_$1529_storage_ptr",
                 "typeString": "struct WalletOwners.Owners"
               }
             }
           },
           {
             "body": {
-              "id": 1246,
+              "id": 1318,
               "nodeType": "Block",
               "src": "393:166:11",
               "statements": [
@@ -130,18 +130,18 @@
                       {
                         "baseExpression": {
                           "expression": {
-                            "id": 1226,
+                            "id": 1298,
                             "name": "owners",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1209,
+                            "referencedDeclaration": 1281,
                             "src": "412:6:11",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_Owners_$1454_storage_ptr",
+                              "typeIdentifier": "t_struct$_Owners_$1529_storage_ptr",
                               "typeString": "struct WalletOwners.Owners storage pointer"
                             }
                           },
-                          "id": 1227,
+                          "id": 1299,
                           "isConstant": false,
                           "isLValue": true,
                           "isPure": false,
@@ -149,20 +149,20 @@
                           "memberLocation": "419:7:11",
                           "memberName": "isOwner",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 1446,
+                          "referencedDeclaration": 1518,
                           "src": "412:14:11",
                           "typeDescriptions": {
                             "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
                             "typeString": "mapping(address => bool)"
                           }
                         },
-                        "id": 1229,
+                        "id": 1301,
                         "indexExpression": {
-                          "id": 1228,
+                          "id": 1300,
                           "name": "sender",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1222,
+                          "referencedDeclaration": 1294,
                           "src": "427:6:11",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
@@ -182,7 +182,7 @@
                       },
                       {
                         "hexValue": "57616c6c6574455243313135353a2063616c6c6572206973206e6f7420616e206f776e6572",
-                        "id": 1230,
+                        "id": 1302,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -208,7 +208,7 @@
                           "typeString": "literal_string \"WalletERC1155: caller is not an owner\""
                         }
                       ],
-                      "id": 1225,
+                      "id": 1297,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
@@ -222,7 +222,7 @@
                         "typeString": "function (bool,string memory) pure"
                       }
                     },
-                    "id": 1231,
+                    "id": 1303,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -238,7 +238,7 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 1232,
+                  "id": 1304,
                   "nodeType": "ExpressionStatement",
                   "src": "404:72:11"
                 },
@@ -248,14 +248,14 @@
                       {
                         "arguments": [
                           {
-                            "id": 1238,
+                            "id": 1310,
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 4294967268,
                             "src": "518:4:11",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_WalletERC1155_$1248",
+                              "typeIdentifier": "t_contract$_WalletERC1155_$1320",
                               "typeString": "library WalletERC1155"
                             }
                           }
@@ -263,11 +263,11 @@
                         "expression": {
                           "argumentTypes": [
                             {
-                              "typeIdentifier": "t_contract$_WalletERC1155_$1248",
+                              "typeIdentifier": "t_contract$_WalletERC1155_$1320",
                               "typeString": "library WalletERC1155"
                             }
                           ],
-                          "id": 1237,
+                          "id": 1309,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -279,14 +279,14 @@
                             "typeString": "type(address)"
                           },
                           "typeName": {
-                            "id": 1236,
+                            "id": 1308,
                             "name": "address",
                             "nodeType": "ElementaryTypeName",
                             "src": "510:7:11",
                             "typeDescriptions": {}
                           }
                         },
-                        "id": 1239,
+                        "id": 1311,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -303,11 +303,11 @@
                         }
                       },
                       {
-                        "id": 1240,
+                        "id": 1312,
                         "name": "to",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1214,
+                        "referencedDeclaration": 1286,
                         "src": "525:2:11",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -315,11 +315,11 @@
                         }
                       },
                       {
-                        "id": 1241,
+                        "id": 1313,
                         "name": "tokenId",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1216,
+                        "referencedDeclaration": 1288,
                         "src": "529:7:11",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -327,11 +327,11 @@
                         }
                       },
                       {
-                        "id": 1242,
+                        "id": 1314,
                         "name": "amount",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1218,
+                        "referencedDeclaration": 1290,
                         "src": "538:6:11",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -339,11 +339,11 @@
                         }
                       },
                       {
-                        "id": 1243,
+                        "id": 1315,
                         "name": "data",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1220,
+                        "referencedDeclaration": 1292,
                         "src": "546:4:11",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bytes_memory_ptr",
@@ -375,18 +375,18 @@
                         }
                       ],
                       "expression": {
-                        "id": 1233,
+                        "id": 1305,
                         "name": "token",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1212,
+                        "referencedDeclaration": 1284,
                         "src": "487:5:11",
                         "typeDescriptions": {
                           "typeIdentifier": "t_contract$_IERC1155_$234",
                           "typeString": "contract IERC1155"
                         }
                       },
-                      "id": 1235,
+                      "id": 1307,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -401,7 +401,7 @@
                         "typeString": "function (address,address,uint256,uint256,bytes memory) external"
                       }
                     },
-                    "id": 1244,
+                    "id": 1316,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -417,13 +417,13 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 1245,
+                  "id": 1317,
                   "nodeType": "ExpressionStatement",
                   "src": "487:64:11"
                 }
               ]
             },
-            "id": 1247,
+            "id": 1319,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -431,42 +431,42 @@
             "nameLocation": "243:8:11",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1223,
+              "id": 1295,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1209,
+                  "id": 1281,
                   "mutability": "mutable",
                   "name": "owners",
                   "nameLocation": "280:6:11",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1247,
+                  "scope": 1319,
                   "src": "252:34:11",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_Owners_$1454_storage_ptr",
+                    "typeIdentifier": "t_struct$_Owners_$1529_storage_ptr",
                     "typeString": "struct WalletOwners.Owners"
                   },
                   "typeName": {
-                    "id": 1208,
+                    "id": 1280,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 1207,
+                      "id": 1279,
                       "name": "WalletOwners.Owners",
                       "nameLocations": [
                         "252:12:11",
                         "265:6:11"
                       ],
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 1454,
+                      "referencedDeclaration": 1529,
                       "src": "252:19:11"
                     },
-                    "referencedDeclaration": 1454,
+                    "referencedDeclaration": 1529,
                     "src": "252:19:11",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Owners_$1454_storage_ptr",
+                      "typeIdentifier": "t_struct$_Owners_$1529_storage_ptr",
                       "typeString": "struct WalletOwners.Owners"
                     }
                   },
@@ -474,12 +474,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1212,
+                  "id": 1284,
                   "mutability": "mutable",
                   "name": "token",
                   "nameLocation": "297:5:11",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1247,
+                  "scope": 1319,
                   "src": "288:14:11",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -488,10 +488,10 @@
                     "typeString": "contract IERC1155"
                   },
                   "typeName": {
-                    "id": 1211,
+                    "id": 1283,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 1210,
+                      "id": 1282,
                       "name": "IERC1155",
                       "nameLocations": [
                         "288:8:11"
@@ -511,12 +511,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1214,
+                  "id": 1286,
                   "mutability": "mutable",
                   "name": "to",
                   "nameLocation": "312:2:11",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1247,
+                  "scope": 1319,
                   "src": "304:10:11",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -525,7 +525,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1213,
+                    "id": 1285,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "304:7:11",
@@ -539,12 +539,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1216,
+                  "id": 1288,
                   "mutability": "mutable",
                   "name": "tokenId",
                   "nameLocation": "324:7:11",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1247,
+                  "scope": 1319,
                   "src": "316:15:11",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -553,7 +553,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1215,
+                    "id": 1287,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "316:7:11",
@@ -566,12 +566,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1218,
+                  "id": 1290,
                   "mutability": "mutable",
                   "name": "amount",
                   "nameLocation": "341:6:11",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1247,
+                  "scope": 1319,
                   "src": "333:14:11",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -580,7 +580,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1217,
+                    "id": 1289,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "333:7:11",
@@ -593,12 +593,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1220,
+                  "id": 1292,
                   "mutability": "mutable",
                   "name": "data",
                   "nameLocation": "362:4:11",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1247,
+                  "scope": 1319,
                   "src": "349:17:11",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -607,7 +607,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 1219,
+                    "id": 1291,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "349:5:11",
@@ -620,12 +620,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1222,
+                  "id": 1294,
                   "mutability": "mutable",
                   "name": "sender",
                   "nameLocation": "376:6:11",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1247,
+                  "scope": 1319,
                   "src": "368:14:11",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -634,7 +634,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1221,
+                    "id": 1293,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "368:7:11",
@@ -650,19 +650,19 @@
               "src": "251:132:11"
             },
             "returnParameters": {
-              "id": 1224,
+              "id": 1296,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "393:0:11"
             },
-            "scope": 1248,
+            "scope": 1320,
             "src": "234:325:11",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "internal"
           }
         ],
-        "scope": 1249,
+        "scope": 1321,
         "src": "154:408:11",
         "usedErrors": []
       }
@@ -675,7 +675,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.13",
-  "updatedAt": "2023-05-01T13:47:30.140Z",
+  "updatedAt": "2023-05-01T14:07:33.548Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
